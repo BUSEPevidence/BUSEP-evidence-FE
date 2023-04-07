@@ -1,0 +1,83 @@
+<div class="container">
+  <h3>Make a new root sertificate</h3>
+  <form class="example-form" [formGroup]="makeSertificateForm" >
+    <mat-form-field class="example-full-width">
+      <mat-label>Common name</mat-label>
+      <input matInput  placeholder="Ana Ivanovic" formControlName="cn">
+      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+        Common name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Surname</mat-label>
+      <input matInput  placeholder="Ivanovic" formControlName="surname">
+      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+        Surname is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Given name</mat-label>
+      <input matInput  placeholder="Ana" formControlName="givenName">
+      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+        Given name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Organization name</mat-label>
+      <input matInput  placeholder="UNS FTN" formControlName="organization">
+      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+        Organization name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Organization unit</mat-label>
+      <input matInput  placeholder="Katedra za informatiku" formControlName="organizationUnit">
+      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+        Organization unit is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Country</mat-label>
+      <input matInput  placeholder="Serbia" formControlName="country">
+      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+        Country is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput  placeholder="Ex. pat@example.com" formControlName="email">
+      <mat-error *ngIf="makeSertificateForm.hasError('email') && !makeSertificateForm.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>User ID</mat-label>
+      <input matInput  placeholder="Serbia" formControlName="uid">
+      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+        User ID is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-raised-button [disabled]="!makeSertificateForm.valid" color="primary" type="submit" >Create</button>
+
+    
+  </form>
+</div>
