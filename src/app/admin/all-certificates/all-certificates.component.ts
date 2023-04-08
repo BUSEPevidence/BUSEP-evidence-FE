@@ -37,4 +37,26 @@ export class AllCertificatesComponent implements OnInit {
     })
   }
 
+  public revokeCertificate(selectedCertificate: Certificate) {
+    if(selectedCertificate.alias == "") {
+      console.log("Odaberi sertifikat")
+    } else {
+      this.adminService.revokeCertificate(selectedCertificate.alias).subscribe(res => {
+        console.log(res)
+        console.log("Successfully revoked")
+      })
+    }
+  }
+
+  public checkValidity(selectedCertificate: Certificate) {
+    if (selectedCertificate.alias == "") {
+      console.log("Odaberi sertifikat")
+    } else {
+      this.adminService.checkValidity(selectedCertificate.alias).subscribe(res => {
+        console.log(res)
+        console.log("checked validity")
+      })
+    }
+  }
+
 }

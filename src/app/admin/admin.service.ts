@@ -17,4 +17,13 @@ export class AdminService {
     return this.http.get<Certificate[]>(this.apiHost + 'admin/get-all-from-store', {headers: this.headers})
   }
 
+  revokeCertificate(alias: string) {
+    return this.http.post(this.apiHost + "admin/revoke-certificate", alias, {headers: this.headers})
+  }
+  
+  checkValidity(alias: string) {
+    let params = new HttpParams().set('alias', alias)
+    return this.http.get(this.apiHost + "admin/certificate-validity", {params: params} )
+  }
+
 }
