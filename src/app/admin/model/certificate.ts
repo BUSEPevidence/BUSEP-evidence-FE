@@ -4,4 +4,5 @@ export interface Certificate {
     issuerName: string
     startDate: Date
     endDate: Date
+    alias: string
 }

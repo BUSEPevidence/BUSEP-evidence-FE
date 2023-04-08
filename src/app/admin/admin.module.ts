@@ -10,6 +10,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AllCertificatesComponent } from "./all-certificates/all-certificates.component";
 import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 
 
@@ -43,6 +45,7 @@ const routes: Routes = [
         MatDatepickerModule,
         MatNativeDateModule,
         MatTableModule,
+        HttpClientModule,
         RouterModule.forChild(routes)
     ]
 })
