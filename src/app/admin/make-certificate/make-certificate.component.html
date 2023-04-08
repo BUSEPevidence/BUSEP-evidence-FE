@@ -4,7 +4,7 @@
     <mat-form-field class="example-full-width">
       <mat-label>Common name</mat-label>
       <input matInput  placeholder="Ana Ivanovic" formControlName="cn">
-      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+      <mat-error *ngIf="makeSertificateForm.get('cn')?.hasError('required')">
         Common name is <strong>required</strong>
       </mat-error>
     </mat-form-field>
@@ -12,7 +12,7 @@
     <mat-form-field class="example-full-width">
       <mat-label>Surname</mat-label>
       <input matInput  placeholder="Ivanovic" formControlName="surname">
-      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+      <mat-error *ngIf="makeSertificateForm.get('surname')?.hasError('required')">
         Surname is <strong>required</strong>
       </mat-error>
     </mat-form-field>
@@ -20,7 +20,7 @@
     <mat-form-field class="example-full-width">
       <mat-label>Given name</mat-label>
       <input matInput  placeholder="Ana" formControlName="givenName">
-      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+      <mat-error *ngIf="makeSertificateForm.get('givenName')?.hasError('required')">
         Given name is <strong>required</strong>
       </mat-error>
     </mat-form-field>
@@ -28,7 +28,7 @@
     <mat-form-field class="example-full-width">
       <mat-label>Organization name</mat-label>
       <input matInput  placeholder="UNS FTN" formControlName="organization">
-      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+      <mat-error *ngIf="makeSertificateForm.get('organization')?.hasError('required')">
         Organization name is <strong>required</strong>
       </mat-error>
     </mat-form-field>
@@ -36,7 +36,7 @@
     <mat-form-field class="example-full-width">
       <mat-label>Organization unit</mat-label>
       <input matInput  placeholder="Katedra za informatiku" formControlName="organizationUnit">
-      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+      <mat-error *ngIf="makeSertificateForm.get('organizationUnit')?.hasError('required')">
         Organization unit is <strong>required</strong>
       </mat-error>
     </mat-form-field>
@@ -44,7 +44,7 @@
     <mat-form-field class="example-full-width">
       <mat-label>Country</mat-label>
       <input matInput  placeholder="Serbia" formControlName="country">
-      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+      <mat-error *ngIf="makeSertificateForm.get('country')?.hasError('required')">
         Country is <strong>required</strong>
       </mat-error>
     </mat-form-field>
@@ -52,7 +52,7 @@
     <mat-form-field class="example-full-width">
       <mat-label>Email</mat-label>
       <input type="email" matInput  placeholder="Ex. pat@example.com" formControlName="email">
-      <mat-error *ngIf="makeSertificateForm.hasError('email') && !makeSertificateForm.hasError('required')">
+      <mat-error *ngIf="makeSertificateForm.get('email')?.hasError('email') && !makeSertificateForm.hasError('required')">
         Please enter a valid email address
       </mat-error>
       <mat-error *ngIf="makeSertificateForm.hasError('required')">
@@ -62,8 +62,8 @@
 
     <mat-form-field class="example-full-width">
       <mat-label>User ID</mat-label>
-      <input matInput  placeholder="Serbia" formControlName="uid">
-      <mat-error *ngIf="makeSertificateForm.hasError('required')">
+      <input matInput  placeholder="123123123" formControlName="uid">
+      <mat-error *ngIf="makeSertificateForm.get('uid')?.hasError('required')">
         User ID is <strong>required</strong>
       </mat-error>
     </mat-form-field>

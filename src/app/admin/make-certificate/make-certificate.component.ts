@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-make-sertificate',
-  templateUrl: './make-sertificate.component.html',
-  styleUrls: ['./make-sertificate.component.css']
+  selector: 'app-make-certificate',
+  templateUrl: './make-certificate.component.html',
+  styleUrls: ['./make-certificate.component.css']
 })
-export class MakeSertificateComponent implements OnInit {
+export class MakeCertificateComponent implements OnInit {
 
   constructor() { }
 
@@ -19,7 +19,6 @@ export class MakeSertificateComponent implements OnInit {
     organizationUnit: new FormControl("", [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
     country: new FormControl("", [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]),
     uid: new FormControl("", [Validators.required, Validators.pattern('^[0-9 ]+$')])
-
   });
 
 

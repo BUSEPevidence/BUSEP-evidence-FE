@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { MakeSertificateComponent } from './make-sertificate.component';
+import { MakeCertificateComponent } from './make-certificate.component';
 
 describe('MakeSertificateComponent', () => {
-  let component: MakeSertificateComponent;
-  let fixture: ComponentFixture<MakeSertificateComponent>;
+  let component: MakeCertificateComponent;
+  let fixture: ComponentFixture<MakeCertificateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MakeSertificateComponent ]
+      declarations: [ MakeCertificateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MakeSertificateComponent);
+    fixture = TestBed.createComponent(MakeCertificateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
