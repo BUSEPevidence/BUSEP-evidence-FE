@@ -1,11 +1,15 @@
 <div>
   <div class="button-container">
-    <button mat-raised-button color="primary">Check valitidy</button>
-    <button mat-raised-button color="warn">Revoke</button>
+    <button mat-raised-button color="primary" (click)="checkValidity(this.selectedCertificate)">Check valitidy</button>
+    <button mat-raised-button color="warn" (click)="revokeCertificate(this.selectedCertificate)">Revoke</button>
   </div>
 
   <div class="tableDiv">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="alias">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Alias </th>
+        <td mat-cell *matCellDef="let element"> {{element.alias}} </td>
+      </ng-container>
 
       <ng-container matColumnDef="serial_number">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Serial number </th>
