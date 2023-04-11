@@ -6,6 +6,7 @@ import { AdminModule } from './admin/admin.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { UserModule } from './user/user.module';
 
 
 
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     AdminModule,
+    UserModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     FormsModule
