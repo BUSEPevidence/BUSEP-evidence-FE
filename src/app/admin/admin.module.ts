@@ -11,6 +11,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AllCertificatesComponent } from "./all-certificates/all-certificates.component";
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 
@@ -46,6 +49,8 @@ const routes: Routes = [
         MatNativeDateModule,
         MatTableModule,
         HttpClientModule,
+        MatSnackBarModule,
+        ToastrModule.forRoot(),
         RouterModule.forChild(routes)
     ]
 })
