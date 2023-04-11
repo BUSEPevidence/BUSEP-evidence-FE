@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DatePipe } from '@angular/common';
 import { AdminService } from '../admin.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-all-certificates',
@@ -19,7 +21,7 @@ export class AllCertificatesComponent implements OnInit {
   public dataSource = new MatTableDataSource<Certificate>();
   public certificates: Certificate[] = [];
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService, private toast: ToastrService) { }
 
   ngOnInit() {
     this.showAllCertificates()
@@ -49,12 +51,12 @@ export class AllCertificatesComponent implements OnInit {
   }
 
   public checkValidity(selectedCertificate: Certificate) {
-    if (selectedCertificate.alias == "") {
-      console.log("Odaberi sertifikat")
+    if (selectedCertificate.alias == undefined) {
+      
+      this.toast.error('Please select a certificate.')
     } else {
-      this.adminService.checkValidity(selectedCertificate.alias).subscribe(res => {
-        console.log(res)
-        console.log("checked validity")
+      this.adminService.checkValidity(selectedCertificate.alias).subscribe((res:any) => {
+        this.toast.success(res);
       })
     }
   }

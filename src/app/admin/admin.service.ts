@@ -13,6 +13,7 @@ export class AdminService {
 
   apiHost: string = "http://localhost:8083/";
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  plainTextHeaders: HttpHeaders = new HttpHeaders({ 'Content-Type': 'text/plain' })
 
   getAllCertificates(): Observable<Certificate[]> {
     return this.http.get<Certificate[]>(this.apiHost + 'admin/get-all-from-store', {headers: this.headers})
@@ -24,7 +25,7 @@ export class AdminService {
   
   checkValidity(alias: string) {
     let params = new HttpParams().set('alias', alias)
-    return this.http.get(this.apiHost + "admin/certificate-validity", {params: params} )
+    return this.http.get(this.apiHost + "admin/certificate-validity", {params: params, headers: this.headers, responseType: 'text' as 'text'} )
   }
 
   makeRootCertificate(dto: MakeRootCertDTO) {
