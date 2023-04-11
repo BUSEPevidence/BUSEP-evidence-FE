@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Certificate } from './model/certificate';
 import { Observable } from 'rxjs';
+import { MakeRootCertDTO } from './model/makeRootCertDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,10 @@ export class AdminService {
   checkValidity(alias: string) {
     let params = new HttpParams().set('alias', alias)
     return this.http.get(this.apiHost + "admin/certificate-validity", {params: params} )
+  }
+
+  makeRootCertificate(dto: MakeRootCertDTO) {
+    return this.http.post(this.apiHost + "admin/create-root", dto, {headers: this.headers})
   }
 
 }

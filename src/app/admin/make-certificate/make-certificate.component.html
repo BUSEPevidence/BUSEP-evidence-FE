@@ -10,22 +10,6 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <mat-label>Surname</mat-label>
-      <input matInput  placeholder="Ivanovic" formControlName="surname">
-      <mat-error *ngIf="makeSertificateForm.get('surname')?.hasError('required')">
-        Surname is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <mat-label>Given name</mat-label>
-      <input matInput  placeholder="Ana" formControlName="givenName">
-      <mat-error *ngIf="makeSertificateForm.get('givenName')?.hasError('required')">
-        Given name is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
       <mat-label>Organization name</mat-label>
       <input matInput  placeholder="UNS FTN" formControlName="organization">
       <mat-error *ngIf="makeSertificateForm.get('organization')?.hasError('required')">
@@ -61,22 +45,14 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <mat-label>User ID</mat-label>
-      <input matInput  placeholder="123123123" formControlName="uid">
+      <mat-label >Years of validity</mat-label>
+      <input type="number" matInput placeholder="Ex. 5" formControlName="yearsOfValidity" >
       <mat-error *ngIf="makeSertificateForm.get('uid')?.hasError('required')">
         User ID is <strong>required</strong>
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <button mat-raised-button [disabled]="!makeSertificateForm.valid" color="primary" type="submit" >Create</button>
+    <button mat-raised-button [disabled]="!makeSertificateForm.valid" color="primary" type="submit" (click)="makeCertificate()" >Create</button>
 
     
   </form>
