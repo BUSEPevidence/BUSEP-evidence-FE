@@ -72,7 +72,7 @@ export class MakeCaEeCertificateComponent implements OnInit {
           },
           error: (error) => {
             console.error(error);
-            this.toast.error(error.message);
+            this.toast.error(error.error);
           }
         })
       }
