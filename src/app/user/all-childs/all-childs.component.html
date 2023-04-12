@@ -1,0 +1,46 @@
+<div>
+    <div class="button-container">
+      <button mat-raised-button color="primary" (click)="checkValidity(this.selectedCertificate)">Check valitidy</button>
+      <button mat-raised-button color="warn" (click)="revokeCertificate(this.selectedCertificate)">Revoke</button>
+      <button mat-raised-button color="accent" (click)="goToMakeCert()">Make certificate</button>
+    </div>
+  
+    <div class="tableDiv">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="alias">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Alias </th>
+          <td mat-cell *matCellDef="let element"> {{element.alias}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="serial_number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Serial number </th>
+          <td mat-cell *matCellDef="let element"> {{element.serialNumber}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="subject_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Subject name </th>
+          <td mat-cell *matCellDef="let element"> {{element.subjectName}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="issuer_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Issuer name </th>
+          <td mat-cell *matCellDef="let element"> {{element.issuerName}} </td>
+        </ng-container>
+  
+          <ng-container matColumnDef="start_date">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Start date </th>
+              <td mat-cell *matCellDef="let element"> {{element.startDate | date:'dd/MM/yyyy'}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="end_date">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> End date </th>
+              <td mat-cell *matCellDef="let element"> {{element.endDate | date:'dd/MM/yyyy'}} </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" [class.selected-row]="row === selectedCertificate" (click)="selectCert(row)"></tr>
+      </table>
+  </div>
+  
+  
+  </div>

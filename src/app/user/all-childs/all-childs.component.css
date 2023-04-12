@@ -1,0 +1,22 @@
+.tableDiv {
+    margin-top: 2%;
+}
+
+.selected-row {
+    background-color: #d0e4f7;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 40%;
+    margin-left: 10px;
+  }
+  
+  .button-container button {
+    flex-basis: 45%;
+    margin-right: 10px;
+  }

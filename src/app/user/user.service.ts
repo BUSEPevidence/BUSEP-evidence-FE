@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CertificateEECA } from './model/certificat-ee-ca';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Certificate } from '../admin/model/certificate';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,9 @@ export class UserService {
   makeCertificateEE(certificate: CertificateEECA, issuer: string, certName: string) {
     const params = new HttpParams().set('alias', issuer).set('certName', certName);
     return this.http.post(this.apiHost + 'admin/create-end-entity', certificate, { params, responseType: 'text' as 'text' });
+  }
+  getAllChildren(): Observable<Certificate[]> {
+    return this.http.get<Certificate[]>(this.apiHost + 'admin/get-all-childs', {headers: this.headers})
   }
 
   makeCertificateCA(certificate: CertificateEECA, issuer: string, certName: string) {

@@ -12,6 +12,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { AllChildsComponent } from './all-childs/all-childs.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
         path: 'make-cert',
         component: MakeCaEeCertificateComponent
       },
+      {
+        path: 'all-childs',
+        component: AllChildsComponent
+      },
     ]
   }
 ]
@@ -30,6 +35,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     MakeCaEeCertificateComponent,
+    AllChildsComponent
   ],
   imports: [
     MatFormFieldModule,
