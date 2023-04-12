@@ -40,19 +40,17 @@ export class AllCertificatesComponent implements OnInit {
   }
 
   public revokeCertificate(selectedCertificate: Certificate) {
-    if(selectedCertificate.alias == "") {
-      console.log("Odaberi sertifikat")
+    if(selectedCertificate.alias == undefined) {
+      this.toast.error('Please select a certificate.')
     } else {
-      this.adminService.revokeCertificate(selectedCertificate.alias).subscribe(res => {
-        console.log(res)
-        console.log("Successfully revoked")
+      this.adminService.revokeCertificate(selectedCertificate.alias).subscribe((res:any) => {
+        this.toast.success(res);
       })
     }
   }
 
   public checkValidity(selectedCertificate: Certificate) {
     if (selectedCertificate.alias == undefined) {
-      
       this.toast.error('Please select a certificate.')
     } else {
       this.adminService.checkValidity(selectedCertificate.alias).subscribe((res:any) => {
