@@ -57,7 +57,10 @@ export class MakeCaEeCertificateComponent implements OnInit {
     if (this.makeSertificateForm.get('isCa') != null) {
       if (this.makeSertificateForm.get('isCa')?.value == "true") {
         this.userService.makeCertificateCA(certificate, issuer, certName).subscribe({
-          next: () => {
+          next: (res:any) => {
+            if(res == "Signer don't have valid certificate")
+            this.toast.error("Signer don't have valid certificate");
+            else
             this.toast.success('Created successfully');
           },
           error: (error) => {
@@ -67,7 +70,10 @@ export class MakeCaEeCertificateComponent implements OnInit {
         })
       } else {
         this.userService.makeCertificateEE(certificate, issuer, certName).subscribe({
-          next: () => {
+          next: (res:any) => {
+            if(res == "Signer don't have valid certificate")
+            this.toast.error("Signer don't have valid certificate");
+            else
             this.toast.success('Created successfully');
           },
           error: (error) => {
