@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MakeRootCertDTO } from '../model/makeRootCertDTO';
 import { AdminService } from '../admin.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-make-certificate',
@@ -11,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MakeCertificateComponent implements OnInit {
 
-  constructor(private adminService: AdminService, private toast: ToastrService) { }
+  constructor(private adminService: AdminService, private toast: ToastrService, private router: Router) { }
 
   makeSertificateForm = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
