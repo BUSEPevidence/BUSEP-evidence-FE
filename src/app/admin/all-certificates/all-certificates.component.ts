@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AllCertificatesComponent implements OnInit {
 
-  displayedColumns: string [] = ["alias", "serial_number", "subject_name", "issuer_name", "start_date", "end_date"]
+  displayedColumns: string[] = ["alias", "serial_number", "subject_name", "issuer_name", "start_date", "end_date"]
 
   public selectedCertificate: Certificate = <Certificate>{};
   public dataSource = new MatTableDataSource<Certificate>();
@@ -40,10 +40,10 @@ export class AllCertificatesComponent implements OnInit {
   }
 
   public revokeCertificate(selectedCertificate: Certificate) {
-    if(selectedCertificate.alias == undefined) {
+    if (selectedCertificate.alias == undefined) {
       this.toast.error('Please select a certificate.')
     } else {
-      this.adminService.revokeCertificate(selectedCertificate.alias).subscribe((res:any) => {
+      this.adminService.revokeCertificate(selectedCertificate.alias).subscribe((res: any) => {
         this.toast.success(res);
       })
     }
@@ -53,7 +53,7 @@ export class AllCertificatesComponent implements OnInit {
     if (selectedCertificate.alias == undefined) {
       this.toast.error('Please select a certificate.')
     } else {
-      this.adminService.checkValidity(selectedCertificate.alias).subscribe((res:any) => {
+      this.adminService.checkValidity(selectedCertificate.alias).subscribe((res: any) => {
         this.toast.success(res);
       })
     }

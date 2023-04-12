@@ -14,12 +14,12 @@ export class UserService {
 
   makeCertificateEE(certificate: CertificateEECA, issuer: string, certName: string) {
     const params = new HttpParams().set('alias', issuer).set('certName', certName);
-    return this.http.post(this.apiHost + 'admin/create-end-entity', certificate, { params });
+    return this.http.post(this.apiHost + 'admin/create-end-entity', certificate, { params, responseType: 'text' as 'text' });
   }
 
   makeCertificateCA(certificate: CertificateEECA, issuer: string, certName: string) {
     const params = new HttpParams().set('alias', issuer).set('certName', certName);
-    return this.http.post(this.apiHost + 'admin/create-ca', certificate, { params });
+    return this.http.post(this.apiHost + 'admin/create-ca', certificate, { params, responseType: 'text' as 'text' });
   }
 
   public GetAliases() {

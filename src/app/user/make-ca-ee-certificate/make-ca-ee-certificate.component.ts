@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { CertificateEECA } from '../model/certificat-ee-ca';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-make-ca-ee-certificate',
@@ -16,6 +17,7 @@ export class MakeCaEeCertificateComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private toast: ToastrService,
   ) { }
 
   makeSertificateForm = new FormGroup({
@@ -56,21 +58,21 @@ export class MakeCaEeCertificateComponent implements OnInit {
       if (this.makeSertificateForm.get('isCa')?.value == "true") {
         this.userService.makeCertificateCA(certificate, issuer, certName).subscribe({
           next: () => {
-            alert('Created successfully');
+            this.toast.success('Created successfully');
           },
           error: (error) => {
             console.error(error);
-            alert(`Error: ${error.error}`);
+            this.toast.error(error.error);
           }
         })
       } else {
         this.userService.makeCertificateEE(certificate, issuer, certName).subscribe({
           next: () => {
-            alert('Created successfully');
+            this.toast.success('Created successfully');
           },
           error: (error) => {
             console.error(error);
-            alert(`Error: ${error.error}`);
+            this.toast.error(error.message);
           }
         })
       }
