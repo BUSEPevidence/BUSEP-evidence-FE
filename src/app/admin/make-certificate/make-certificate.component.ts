@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MakeRootCertDTO } from '../model/makeRootCertDTO';
 import { AdminService } from '../admin.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-make-certificate',
@@ -10,7 +11,7 @@ import { AdminService } from '../admin.service';
 })
 export class MakeCertificateComponent implements OnInit {
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService, private toast: ToastrService) { }
 
   makeSertificateForm = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
@@ -35,8 +36,12 @@ export class MakeCertificateComponent implements OnInit {
       rootName: "" + this.makeSertificateForm.get('cn')?.value
     }
 
-    this.adminService.makeRootCertificate(certificateToCreate).subscribe(res => {
-      console.log(res)
+    this.adminService.makeRootCertificate(certificateToCreate).subscribe((res: any) => {
+      if (res == "Alias is already in use.") {
+        this.toast.error(res)
+      } else {
+        this.toast.success(res);
+      }
     })
   }
 

@@ -20,7 +20,7 @@ export class AdminService {
   }
 
   revokeCertificate(alias: string) {
-    return this.http.post(this.apiHost + "admin/revoke-certificate", alias, {headers: this.headers})
+    return this.http.post(this.apiHost + "admin/revoke-certificate", alias, {headers: this.headers, responseType: 'text' as 'text'})
   }
   
   checkValidity(alias: string) {
@@ -29,7 +29,7 @@ export class AdminService {
   }
 
   makeRootCertificate(dto: MakeRootCertDTO) {
-    return this.http.post(this.apiHost + "admin/create-root", dto, {headers: this.headers})
+    return this.http.post(this.apiHost + "admin/create-root", dto, {headers: this.headers, responseType: 'text' as 'text'})
   }
 
 }
