@@ -56,7 +56,7 @@ export class AllCertificatesComponent implements OnInit {
       this.toast.error('Please select a certificate.')
     } else {
       this.adminService.checkValidity(selectedCertificate.alias).subscribe((res: any) => {
-        this.toast.success(res);
+        this.toast.info(res);
       })
     }
   }
