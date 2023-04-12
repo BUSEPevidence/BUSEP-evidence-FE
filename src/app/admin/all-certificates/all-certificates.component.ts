@@ -5,6 +5,8 @@ import { DatePipe } from '@angular/common';
 import { AdminService } from '../admin.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -21,7 +23,7 @@ export class AllCertificatesComponent implements OnInit {
   public dataSource = new MatTableDataSource<Certificate>();
   public certificates: Certificate[] = [];
 
-  constructor(private adminService: AdminService, private toast: ToastrService) { }
+  constructor(private adminService: AdminService, private toast: ToastrService, private router: Router) { }
 
   ngOnInit() {
     this.showAllCertificates()
@@ -58,5 +60,14 @@ export class AllCertificatesComponent implements OnInit {
       })
     }
   }
+
+  public goToMakeRoot() {
+    this.router.navigate(['/admin/make-root'])
+  }
+
+  public goToMakeCert() {
+    this.router.navigate(['/admin/make-cert'])
+  }
+
 
 }

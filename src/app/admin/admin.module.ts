@@ -13,8 +13,9 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-
+import { MakeCaEeComponent } from "./make-ca-ee/make-ca-ee.component";
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -23,12 +24,16 @@ const routes: Routes = [
         path: 'admin',
         children: [
             {
-                path: 'make-cert',
+                path: 'make-root',
                 component: MakeCertificateComponent
             },
             {
                 path: 'all-cert',
                 component: AllCertificatesComponent
+            },
+            {
+                path: 'make-cert',
+                component: MakeCaEeComponent
             }
         ]
     }
@@ -37,7 +42,8 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         MakeCertificateComponent,
-        AllCertificatesComponent
+        AllCertificatesComponent,
+        MakeCaEeComponent
     ],
     imports: [
         MatFormFieldModule,
@@ -50,6 +56,8 @@ const routes: Routes = [
         MatTableModule,
         HttpClientModule,
         MatSnackBarModule,
+        MatRadioModule,
+        MatSelectModule,
         ToastrModule.forRoot(),
         RouterModule.forChild(routes)
     ]

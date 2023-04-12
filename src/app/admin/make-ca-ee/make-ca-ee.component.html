@@ -1,0 +1,85 @@
+<div class="container">
+  <h3>Make a new sertificate</h3>
+  <form class="example-form" [formGroup]="makeSertificateForm">
+
+      <mat-radio-group formControlName="isCa" class="example-full-width">
+          <mat-label>Pick a certificate type</mat-label>
+          <div class="radio-controlls">
+              <mat-radio-button value="true" name="myGroup">CA</mat-radio-button>
+              <mat-radio-button value="false" name="myGroup">End entity</mat-radio-button>
+          </div>
+      </mat-radio-group>
+
+      <mat-form-field class="example-full-width">
+          <mat-label>Certificate name</mat-label>
+          <input matInput placeholder="Sertifikat 1" formControlName="certName">
+          <mat-error *ngIf="makeSertificateForm.get('certName')?.hasError('required')">
+              Certificate name is <strong>required</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+          <mat-label>Full name</mat-label>
+          <input matInput placeholder="Ana Ivanovic" formControlName="subjectName">
+          <mat-error *ngIf="makeSertificateForm.get('subjectName')?.hasError('required')">
+              Full name is <strong>required</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+          <mat-label>Organization name</mat-label>
+          <input matInput placeholder="UNS FTN" formControlName="organization">
+          <mat-error *ngIf="makeSertificateForm.get('organization')?.hasError('required')">
+              Organization name is <strong>required</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+          <mat-label>Organization unit</mat-label>
+          <input matInput placeholder="Katedra za informatiku" formControlName="organizationUnit">
+          <mat-error *ngIf="makeSertificateForm.get('organizationUnit')?.hasError('required')">
+              Organization unit is <strong>required</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+          <mat-label>Country</mat-label>
+          <input matInput placeholder="Serbia" formControlName="country">
+          <mat-error *ngIf="makeSertificateForm.get('country')?.hasError('required')">
+              Country is <strong>required</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
+          <mat-error
+              *ngIf="makeSertificateForm.get('email')?.hasError('email') && !makeSertificateForm.hasError('required')">
+              Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="makeSertificateForm.hasError('required')">
+              Email is <strong>required</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+          <mat-label>Pick an issuer</mat-label>
+          <mat-select placeholder="Pick an issuer" formControlName="issuer">
+              <mat-option *ngFor="let option of issuers" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+          <mat-label>Years of validity</mat-label>
+          <input matInput placeholder="3" formControlName="yearsOfValidity">
+          <mat-error *ngIf="makeSertificateForm.get('yearsOfValidity')?.hasError('required')">
+              Years of validity is <strong>required</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button [disabled]="!makeSertificateForm.valid" color="primary" type="submit"
+          (click)="makeCertificate()">Create</button>
+
+
+  </form>
+</div>

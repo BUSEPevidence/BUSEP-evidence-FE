@@ -2,6 +2,8 @@
   <div class="button-container">
     <button mat-raised-button color="primary" (click)="checkValidity(this.selectedCertificate)">Check valitidy</button>
     <button mat-raised-button color="warn" (click)="revokeCertificate(this.selectedCertificate)">Revoke</button>
+    <button mat-raised-button color="accent" (click)="goToMakeRoot()">Make root certificate</button>
+    <button mat-raised-button color="accent" (click)="goToMakeCert()">Make certificate</button>
   </div>
 
   <div class="tableDiv">
