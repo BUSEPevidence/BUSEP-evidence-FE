@@ -5,7 +5,21 @@
 .selected-row {
     background-color: #d0e4f7;
 }
+#bura {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
+#bura:hover {
+  background-color: #0056b3;
+}
 .button-container {
     display: flex;
     justify-content: space-between;
