@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Certificate } from './model/certificate';
 import { Observable } from 'rxjs';
 import { MakeRootCertDTO } from './model/makeRootCertDTO';
+import { downDTO } from './model/downDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,9 @@ export class AdminService {
 
   revokeCertificate(alias: string) {
     return this.http.post(this.apiHost + "admin/revoke-certificate", alias, {headers: this.headers, responseType: 'text' as 'text'})
+  }
+  downloadCertificate(dto: downDTO) {
+    return this.http.post(this.apiHost + "admin/download-certificate", dto,{ headers: this.headers} )
   }
   
   checkValidity(alias: string) {
