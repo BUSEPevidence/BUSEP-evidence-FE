@@ -13,11 +13,17 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { AllChildsComponent } from './all-childs/all-childs.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { UserComponent } from './user.component';
+
 
 
 const routes: Routes = [
   {
     path: 'user',
+    component:UserComponent,
     children: [
       {
         path: 'make-cert',
@@ -35,9 +41,16 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     MakeCaEeCertificateComponent,
-    AllChildsComponent
+    AllChildsComponent,
+    SideMenuComponent,
+    AllChildsComponent,
+    MakeCaEeCertificateComponent,
+    UserComponent
+
   ],
   imports: [
+    MatToolbarModule,
+    MatIconModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     CommonModule,
@@ -51,6 +64,7 @@ const routes: Routes = [
     FormsModule,
     MatSelectModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  exports: [SideMenuComponent]
 })
 export class UserModule { }

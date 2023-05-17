@@ -53,7 +53,7 @@ export class RegisterComponent {
     this.user.username = username;
     if(passwordInput.value == repeatPasswordInput.value)
     {
-    this.user.password
+    this.user.password = password;
     this.canReg = true;
     }
     else this.canReg = false;
@@ -81,10 +81,6 @@ public register(){
 
 
   ngOnInit() {
-  }
-
-  public TakeUserInfo() {
-    
   }
 
 }
