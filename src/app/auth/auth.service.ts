@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { RegisterUser } from './login/model/RegisterUser';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,10 @@ executed = false;
     return this.http.get(this.apiHost + 'api/auth/visitLink?request=' + param,{headers : this.headers}).subscribe(res => {
         console.log(res)
     });
+  }
+  public register(user: RegisterUser) {
+    return this.http.post<RegisterUser>(this.apiHost + 'api/auth/register',user, { headers: this.headers }).subscribe(res => {
+      console.log(res)
+  });
   }
 }
