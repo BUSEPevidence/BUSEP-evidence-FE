@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { RegisterUser } from './login/model/RegisterUser';
 import { LoginUser } from './login/model/LoginUser';
 import jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 interface TokenInterface
 {
   token:string;
@@ -18,7 +19,7 @@ interface RolesInterface
 
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { }
 
   apiHost: string = "http://localhost:8083/";
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -60,6 +61,23 @@ executed = false;
     var ret : string = ""
      this.http.get<RolesInterface>(this.apiHost + 'api/auth/getRoles?request='+user, { headers: this.headers }).subscribe(res => {
       localStorage.setItem('role',res.roles)
+      var rol : any;
+        var check : string = ""
+        var role: string = "";
+          rol = localStorage.getItem('role')
+          role = rol + ""
+          role.split(',').forEach((item: string) => {
+            if(item == "ROLE_ADMIN")
+              check = "/admin"
+              if(item == "ROLE_ENGINEER")
+              check = "/engineer"
+              if(item == "ROLE_HR")
+              check = "/hr"
+              if(item == "ROLE_MANAGER")
+              check = "/manager"
+              
+          });
+            this.router.navigate([check]);
   });
   }
 

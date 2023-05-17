@@ -11,7 +11,7 @@ import { Observable } from "rxjs";
         providedIn: 'root'
     }
 )
-export class AuthGuard implements CanActivate{
+export class EngGuard implements CanActivate{
     constructor(private router: Router){
         
 
@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate{
           rol = localStorage.getItem('role')
           role = rol + ""
           role.split(',').forEach((item: string) => {
-            if(item == "ROLE_HR")
+            if(item == "ROLE_ENGINEER")
               check = true
           });
         }

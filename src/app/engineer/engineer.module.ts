@@ -1,5 +1,4 @@
 import { RouterModule, Routes } from "@angular/router";
-import { MakeCertificateComponent } from "./make-certificate/make-certificate.component";
 import { NgModule } from "@angular/core";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -8,49 +7,33 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { AllCertificatesComponent } from "./all-certificates/all-certificates.component";
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MakeCaEeComponent } from "./make-ca-ee/make-ca-ee.component";
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AdminComponent } from "./admin.component";
+import { EngineerComponent } from "./engineer.component";
 
 
 
 const routes: Routes = [
     {
-        path: 'admin',
-        component:AdminComponent,
+        path: 'engineer',
+        component:EngineerComponent,
         children: [
-            {
-                path: 'make-root',
-                component: MakeCertificateComponent
-            },
-            {
-                path: 'all-cert',
-                component: AllCertificatesComponent
-            },
-            {
-                path: 'make-cert',
-                component: MakeCaEeComponent
-            }
         ]
     }
 ]
 
 @NgModule({
     declarations: [
-        MakeCertificateComponent,
-        AllCertificatesComponent,
-        MakeCaEeComponent,
         SideMenuComponent,
-        AdminComponent
+        EngineerComponent
+        
     ],
     imports: [
         MatToolbarModule,
@@ -72,4 +55,4 @@ const routes: Routes = [
     ],
     exports: [SideMenuComponent]
 })
-export class AdminModule { }
+export class EngineerModule { }

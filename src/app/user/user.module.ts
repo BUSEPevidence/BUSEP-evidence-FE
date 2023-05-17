@@ -43,8 +43,6 @@ const routes: Routes = [
     MakeCaEeCertificateComponent,
     AllChildsComponent,
     SideMenuComponent,
-    AllChildsComponent,
-    MakeCaEeCertificateComponent,
     UserComponent
 
   ],

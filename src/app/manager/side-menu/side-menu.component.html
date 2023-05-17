@@ -3,51 +3,47 @@
         <div class="item" style="margin-top: 7px" (click)="toggleBurger()">
             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu"></mat-icon>
         </div>
-        <a [routerLink]="['/user/make-cert']">
+        <a [routerLink]="['/engineer']" [hidden]="isHiddenLogout()">
             <div class="item">
                 <mat-icon aria-hidden="false" aria-label="Home icon" fontIcon="home"></mat-icon>
                 <div class="tooltip">Home</div>
             </div>
         </a>
-        <a [routerLink]="['/user/all-childs']" >
-            <div class="item">
-                <mat-icon aria-hidden="false" aria-label="Feedback icon" fontIcon="feedback"></mat-icon>
-                <div class="tooltip">All Childs</div>
-            </div>
-        </a>
-        <a [routerLink]="['/patient/appointment/step-by-step']" >
-            <div class="item">
-                <mat-icon aria-hidden="false" aria-label="Schedule icon" fontIcon="schedule"></mat-icon>
-                <div class="tooltip">Schedule appointment</div>
-            </div>
-        </a>
-        <a [routerLink]="['/patient/myAppointments']">
-            <div class="item">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="healing icon"></mat-icon>
-                <div class="tooltip">My appointments</div>
-            </div>
-        </a>
-        <a [routerLink]="['/patient/finished']" >
-            <div class="item">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="done"></mat-icon>
-                <div class="tooltip">Finished Appointments</div>
-            </div>
-        </a>
+        
+    
     </div>
    <div class="bottom-menu">
-        <a [routerLink]="['user/register']" >
+    <a [routerLink]="['/engineer']"  [hidden]="isHiddenEngineer()">
+        <div class="item">
+            <mat-icon aria-hidden="false" aria-label="Register icon" fontIcon="done"></mat-icon>
+            <div class="tooltip">Engineer</div>
+        </div>
+    </a>
+    <a [routerLink]="['/hr']" [hidden]="isHiddenHr()">
+        <div class="item">
+            <mat-icon aria-hidden="false" aria-label="Login icon" fontIcon="done"></mat-icon>
+            <div class="tooltip">Hr</div>
+        </div>
+    </a>
+    <a [routerLink]="['/admin']"  [hidden]="isHiddenAdmin()">
+        <div class="item">
+            <mat-icon aria-hidden="false" aria-label="Login icon" fontIcon="done"></mat-icon>
+            <div class="tooltip">Admin</div>
+        </div>
+    </a>
+        <a [routerLink]="['user/register']" [hidden]="isHidden()" >
             <div class="item">
-                <mat-icon aria-hidden="false" aria-label="Register icon" fontIcon="done"></mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Register icon" fontIcon="login"></mat-icon>
                 <div class="tooltip">Register</div>
             </div>
         </a>
-        <a [routerLink]="['/auth/login']">
+        <a [routerLink]="['/auth/login']" [hidden]="isHidden()">
             <div class="item">
                 <mat-icon aria-hidden="false" aria-label="Login icon" fontIcon="login"></mat-icon>
                 <div class="tooltip">Login</div>
             </div>
         </a>
-        <a [routerLink]="['/auth/login']" (click)="logOut()">
+        <a [routerLink]="['/auth/login']" (click)="logOut()" [hidden]="isHiddenLogout()">
             <div class="item">
                 <mat-icon aria-hidden="false" aria-label="Login icon" fontIcon="logout"></mat-icon>
                 <div class="tooltip">Logout</div>
