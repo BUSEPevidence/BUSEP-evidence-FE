@@ -12,15 +12,27 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './model/auth.guard';
+import { MatIconModule } from '@angular/material/icon';
+import { AuthComponent } from './auth.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { SideMenuComponent } from './side-menu/side-menu.component';
+
 
 
 const routes: Routes = [
   {
     path: 'auth',
+    component:AuthComponent,
     children: [
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
       },
     ]
   }
@@ -29,9 +41,15 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    AuthComponent,
   ],
   imports: [
+    MatToolbarModule,
+    RouterModule,
+    CommonModule,
+    MatIconModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     CommonModule,
@@ -45,6 +63,7 @@ const routes: Routes = [
     FormsModule,
     MatSelectModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  exports: []
 })
 export class AuthModule { }

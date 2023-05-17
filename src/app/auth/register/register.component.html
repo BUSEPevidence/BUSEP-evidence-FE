@@ -1,0 +1,40 @@
+<div class="register-container">
+    <h2>Registration Form</h2>
+    <form class="register-form" action="/register" method="POST">
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" name="firstname" required>
+  
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" name="lastname" required>
+  
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+  
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+  
+      <label for="password">Repeat Password:</label>
+      <input type="password" id="passwordd" name="password" required>
+  
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required>
+  
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" required>
+  
+      <label for="state">State:</label>
+      <input type="text" id="state" name="state" required>
+  
+      <label for="number">Phone Number:</label>
+      <input type="text" id="number" name="number" required>
+  
+      <label for="title">Role:</label>
+      <div class="radio-group">
+        <label for="ROLE_ENGINEER"><input type="checkbox" id="ROLE_ENGINEER" name="title" required> Engineer</label>
+        <label for="ROLE_MANAGER"><input type="checkbox" id="ROLE_MANAGER" name="title" required> Manager</label>
+        <label for="ROLE_HR"><input type="checkbox" id="ROLE_HR" name="title" required> HR</label>
+      </div>
+  
+      <button type="submit" (click)="register()">Register</button>
+    </form>
+  </div>

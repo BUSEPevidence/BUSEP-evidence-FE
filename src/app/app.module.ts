@@ -8,7 +8,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptor } from './auth/model/auth.interceptor';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
+import { HrModule } from './hr/hr.module';
+import { ManagerModule } from './manager/manager.module';
+import { EngineerModule } from './engineer/engineer.module';
 
 
 
@@ -17,16 +23,27 @@ import { AuthModule } from './auth/auth.module';
     AppComponent
   ],
   imports: [
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     AdminModule,
     UserModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
+    HttpClientModule,
     FormsModule,
-    AuthModule
+    AuthModule,
+    HrModule,
+    ManagerModule,
+    EngineerModule
   ],
-  providers: [],
+  providers: [
+    {
+       provide: HTTP_INTERCEPTORS,
+       useClass: TokenInterceptor,
+       multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
