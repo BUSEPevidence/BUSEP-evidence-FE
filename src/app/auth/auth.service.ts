@@ -47,6 +47,7 @@ executed = false;
   public register(user: RegisterUser) {
     return this.http.post<RegisterUser>(this.apiHost + 'api/auth/register',user, { headers: this.headers }).subscribe(res => {
       console.log(res)
+      window.location.reload()
   });
   }
   getDecodedAccessToken(token: string): any {
