@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 interface TokenInterface
 {
   token:string;
+  refreshToken:string;
 }
 interface RolesInterface
 {
@@ -85,7 +86,8 @@ executed = false;
   public login(user: LoginUser) {
     return this.http.post<TokenInterface>(this.apiHost + 'api/auth/login',user, { headers: this.headers }).subscribe(res => {
       localStorage.setItem('token',res.token)
-      this.getRoles(this.getDecodedAccessToken(res.token).sub)
+      localStorage.setItem('refreshToken',res.refreshToken)
+      //this.getRoles(this.getDecodedAccessToken(res.token).sub)
   });
   }
 }
