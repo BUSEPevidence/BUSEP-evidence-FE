@@ -4,6 +4,7 @@ import { Certificate } from './model/certificate';
 import { Observable } from 'rxjs';
 import { MakeRootCertDTO } from './model/makeRootCertDTO';
 import { downDTO } from './model/downDTO';
+import { RegisterUser } from '../auth/login/model/RegisterUser';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,44 @@ export class AdminService {
 
   makeRootCertificate(dto: MakeRootCertDTO) {
     return this.http.post(this.apiHost + "admin/create-root", dto, {headers: this.headers, responseType: 'text' as 'text'})
+  }
+  approveRequest(dto: RegisterUser) {
+    return this.http.post<string>(this.apiHost + "api/auth/approve", dto, {headers: this.headers}).subscribe(res => {
+      console.log(res);
+      
+    })
+  }
+  denieRequest(dto: RegisterUser) {
+    return this.http.post<string>(this.apiHost + "api/auth/denie", dto, {headers: this.headers}).subscribe(res => {
+      console.log(res);
+      window.location.reload()
+      
+    })
+  }
+    
+  getRequests():(RegisterUser[]) {
+    var c : string = ""
+    const resultList: RegisterUser[] = [];
+    this.http.get<RegisterUser[]>(this.apiHost + "admin/get-requests", {headers: this.headers}).subscribe(res => {
+    res.forEach(user => {
+ 
+      const newUser: RegisterUser = {
+        username: user.username,
+        password: user.password,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        address: user.address,
+        city: user.city,
+        state: user.state,
+        number: user.number,
+        title: user.title,
+        adminApprove: user.adminApprove
+      };
+      resultList.push(newUser);
+    });
+  });
+  
+  return resultList
   }
 
 }

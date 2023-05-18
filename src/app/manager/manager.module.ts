@@ -17,6 +17,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ManagerComponent } from "./manager.component";
+import { ManGuard } from "../auth/model/manager.guard";
 
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
     {
         path: 'manager',
         component:ManagerComponent,
+        canActivate: [ManGuard],
         children: [
         ]
     }
