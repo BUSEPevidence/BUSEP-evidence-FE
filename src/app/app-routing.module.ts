@@ -10,9 +10,10 @@ import { AuthGuard } from './auth/model/auth.guard';
 import { AdminGuard } from './auth/model/admin.guard';
 import { EngGuard } from './auth/model/engineer.guard';
 import { ManGuard } from './auth/model/manager.guard';
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
-  { path: 'auth', component: AuthComponent },
+  { path: '', component: AuthComponent },
    { path: 'user', component: UserComponent },
    { path: 'admin', component: AdminComponent,canActivate: [AdminGuard]},
    { path: 'hr', component: HrComponent,canActivate: [AuthGuard]},
