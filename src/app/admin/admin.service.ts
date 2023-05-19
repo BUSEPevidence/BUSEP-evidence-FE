@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { MakeRootCertDTO } from './model/makeRootCertDTO';
 import { downDTO } from './model/downDTO';
 import { RegisterUser } from '../auth/login/model/RegisterUser';
+import { RolePermissionDTO } from './model/RolePermissionDTO';
+import { RolePermDTO } from './model/RolePermDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +51,21 @@ export class AdminService {
       
     })
   }
+
+  deletePermission(dto: RolePermissionDTO) {
+    return this.http.post<string>(this.apiHost + "role/deletePermission", dto, {headers: this.headers}).subscribe(res => {
+      console.log(res);
+      window.location.reload()
+      
+    })
+  }
+  addPermission(dto: RolePermissionDTO) {
+    return this.http.post<string>(this.apiHost + "role/addPermission", dto, {headers: this.headers}).subscribe(res => {
+      console.log(res);
+      window.location.reload()
+      
+    })
+  }
     
   getRequests():(RegisterUser[]) {
     var c : string = ""
@@ -74,5 +91,56 @@ export class AdminService {
   
   return resultList
   }
+  getPerms():(RolePermissionDTO[]) {
+    var c : string = ""
+    const resultList: RolePermissionDTO[] = [];
+    this.http.get<RolePermissionDTO[]>(this.apiHost + "role/getForDelete", {headers: this.headers}).subscribe(res => {
+    res.forEach(user => {
+ 
+      const newUser: RolePermissionDTO = {
+        role: user.role,
+        permission: user.permission
+      };
+      resultList.push(newUser);
+    });
+  });
+  
+  return resultList
+  }
+
+  getAllPerms():(RolePermDTO[]) {
+    var c : string = ""
+    const resultList: RolePermDTO[] = [];
+    this.http.get<RolePermDTO[]>(this.apiHost + "permission/getAll", {headers: this.headers}).subscribe(res => {
+    res.forEach(user => {
+ 
+      const newUser: RolePermDTO = {
+        name: user.name,
+      };
+      resultList.push(newUser);
+    });
+  });
+  
+  return resultList
+  }
+
+  getAllRoles():(RolePermDTO[]) {
+    var c : string = ""
+    const resultList: RolePermDTO[] = [];
+    this.http.get<RolePermDTO[]>(this.apiHost + "role/getAll", {headers: this.headers}).subscribe(res => {
+    res.forEach(user => {
+ 
+      const newUser: RolePermDTO = {
+        name: user.name,
+      };
+      resultList.push(newUser);
+    });
+  });
+  
+  return resultList
+  }
+
+
+
 
 }

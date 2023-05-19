@@ -1,0 +1,36 @@
+<table class="user-table" style="border: 5px solid #0e424b;">
+    <thead>
+      
+    </thead>
+    <tbody>
+        <td>
+            <mat-select [(value)]="selectedRole">
+                <mat-option *ngFor="let value of roleList" [value]="value">{{ value.name }}</mat-option>
+            </mat-select>
+        </td>
+        <td><mat-select [(value)]="selectedPerm">
+            <mat-option *ngFor="let value of permList" [value]="value">{{ value.name }}</mat-option>
+          </mat-select></td>
+        <td>
+          <button class="accept-btn"  (click)="addPermission()">Add permission</button>
+        </td>
+    </tbody>
+  </table>
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Permission</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of resultList">
+        <td>{{ user.role }}</td>
+        <td>{{ user.permission }}</td>
+        <td>
+          <button class="accept-btn"  (click)="deletePermission(user)">Delete permission</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

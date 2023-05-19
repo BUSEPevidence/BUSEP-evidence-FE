@@ -22,6 +22,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AdminComponent } from "./admin.component";
 import { AcceptRequestComponent } from './accept-request/accept-request.component';
 import { AdminGuard } from "../auth/model/admin.guard";
+import { AddPermissionComponent } from './add-permission/add-permission.component';
 
 
 
@@ -46,6 +47,10 @@ const routes: Routes = [
             {
                 path: 'accept-request',
                 component: AcceptRequestComponent
+            },
+            {
+                path: 'add-permission',
+                component:AddPermissionComponent
             }
         ]
     }
@@ -58,7 +63,8 @@ const routes: Routes = [
         MakeCaEeComponent,
         SideMenuComponent,
         AdminComponent,
-        AcceptRequestComponent
+        AcceptRequestComponent,
+        AddPermissionComponent
     ],
     imports: [
         MatToolbarModule,
