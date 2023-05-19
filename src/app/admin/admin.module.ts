@@ -20,6 +20,8 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AdminComponent } from "./admin.component";
+import { AcceptRequestComponent } from './accept-request/accept-request.component';
+import { AdminGuard } from "../auth/model/admin.guard";
 
 
 
@@ -27,6 +29,7 @@ const routes: Routes = [
     {
         path: 'admin',
         component:AdminComponent,
+        canActivate: [AdminGuard],
         children: [
             {
                 path: 'make-root',
@@ -39,6 +42,10 @@ const routes: Routes = [
             {
                 path: 'make-cert',
                 component: MakeCaEeComponent
+            },
+            {
+                path: 'accept-request',
+                component: AcceptRequestComponent
             }
         ]
     }
@@ -50,7 +57,8 @@ const routes: Routes = [
         AllCertificatesComponent,
         MakeCaEeComponent,
         SideMenuComponent,
-        AdminComponent
+        AdminComponent,
+        AcceptRequestComponent
     ],
     imports: [
         MatToolbarModule,

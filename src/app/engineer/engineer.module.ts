@@ -17,6 +17,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { EngineerComponent } from "./engineer.component";
+import { EngGuard } from "../auth/model/engineer.guard";
 
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
     {
         path: 'engineer',
         component:EngineerComponent,
+        canActivate: [EngGuard],
         children: [
         ]
     }
