@@ -23,7 +23,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 
 const routes: Routes = [
   {
-    path: 'auth',
+    path: '',
     component:AuthComponent,
     children: [
       {
@@ -41,6 +41,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    SideMenuComponent,
     LoginComponent,
     RegisterComponent,
     AuthComponent,
@@ -62,8 +63,8 @@ const routes: Routes = [
     MatRadioModule,
     FormsModule,
     MatSelectModule,
-    RouterModule.forChild(routes)
+    RouterModule.forRoot(routes)
   ],
-  exports: []
+  exports: [SideMenuComponent]
 })
 export class AuthModule { }
