@@ -15,6 +15,12 @@
                 <div class="tooltip">Accept requests</div>
             </div>
         </a>
+        <a [routerLink]="['/admin/add-permission']" [hidden]="isHiddenLogout()">
+            <div class="item">
+                <mat-icon aria-hidden="false" aria-label="Home icon" fontIcon="add"></mat-icon>
+                <div class="tooltip">Add/Delete Permission</div>
+            </div>
+        </a>
         
     
     </div>
