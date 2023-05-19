@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { RegisterUser } from './login/model/RegisterUser';
 import { LoginUser } from './login/model/LoginUser';
 import jwt_decode from 'jwt-decode';
@@ -87,8 +87,22 @@ executed = false;
     return this.http.post<TokenInterface>(this.apiHost + 'api/auth/login',user, { headers: this.headers }).subscribe(res => {
       localStorage.setItem('token',res.token)
       localStorage.setItem('refreshToken',res.refreshToken)
-      //this.getRoles(this.getDecodedAccessToken(res.token).sub)
+      this.getRoles(this.getDecodedAccessToken(res.token).sub)
   });
+  }
+
+  public hey(){
+    this.http.get(this.apiHost + 'api/auth/HEY', { observe: 'response', responseType: 'text' }).subscribe(
+      (response: HttpResponse<any>) => {
+        console.log('Response:', response.body);
+        
+        // Retrieve and display all headers
+        const headers = response.headers;
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 }
 
