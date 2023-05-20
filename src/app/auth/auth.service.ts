@@ -22,7 +22,7 @@ export class AuthService {
 
   constructor(private http: HttpClient,private router:Router) { }
 
-  apiHost: string = "http://localhost:8083/";
+  apiHost: string = "https://localhost:8443/";
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
 executed = false;
@@ -91,18 +91,5 @@ executed = false;
   });
   }
 
-  public hey(){
-    this.http.get(this.apiHost + 'api/auth/HEY', { observe: 'response', responseType: 'text' }).subscribe(
-      (response: HttpResponse<any>) => {
-        console.log('Response:', response.body);
-        
-        // Retrieve and display all headers
-        const headers = response.headers;
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
-  }
 }
 

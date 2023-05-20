@@ -59,6 +59,12 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "sslKey": "./src/assets/ssl/FRONTKEY.key",
+            "sslCert": "./src/assets/ssl/frontendcert.pem",
+            "ssl":true
+          
+          },
           "configurations": {
             "production": {
               "browserTarget": "ITevidence:build:production"
