@@ -5,6 +5,11 @@
 .selected-row {
     background-color: #d0e4f7;
 }
+
+.whole-div{
+  margin-left: 70px;
+}
+
 #bura {
   display: inline-block;
   padding: 10px 20px;

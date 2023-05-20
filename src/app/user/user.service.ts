@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  apiHost: string = "http://localhost:8083/";
+  apiHost: string = "https://localhost:8443/";
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   makeCertificateEE(certificate: CertificateEECA, issuer: string, certName: string) {
