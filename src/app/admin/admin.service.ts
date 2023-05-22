@@ -7,6 +7,7 @@ import { downDTO } from './model/downDTO';
 import { RegisterUser } from '../auth/login/model/RegisterUser';
 import { RolePermissionDTO } from './model/RolePermissionDTO';
 import { RolePermDTO } from './model/RolePermDTO';
+import { PermissionDTO } from './model/PermissionDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -60,9 +61,14 @@ export class AdminService {
     })
   }
   addPermission(dto: RolePermissionDTO) {
-    return this.http.post<string>(this.apiHost + "role/addPermission", dto, {headers: this.headers}).subscribe(res => {
+    return this.http.post<string>(this.apiHost + "role/addPermissions", dto, {headers: this.headers}).subscribe(res => {
       console.log(res);
       window.location.reload()
+      
+    })
+  }
+  createPermission(dto: PermissionDTO) {
+    return this.http.post<string>(this.apiHost + "permission/addPermission", dto, {headers: this.headers}).subscribe(res => {
       
     })
   }

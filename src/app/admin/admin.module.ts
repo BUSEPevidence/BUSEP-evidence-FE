@@ -23,6 +23,7 @@ import { AdminComponent } from "./admin.component";
 import { AcceptRequestComponent } from './accept-request/accept-request.component';
 import { AdminGuard } from "../auth/model/admin.guard";
 import { AddPermissionComponent } from './add-permission/add-permission.component';
+import { CreatePermissionComponent } from './create-permission/create-permission.component';
 
 
 
@@ -51,6 +52,10 @@ const routes: Routes = [
             {
                 path: 'add-permission',
                 component:AddPermissionComponent
+            },
+            {
+                path: 'create-permission',
+                component:CreatePermissionComponent
             }
         ]
     }
@@ -64,7 +69,8 @@ const routes: Routes = [
         SideMenuComponent,
         AdminComponent,
         AcceptRequestComponent,
-        AddPermissionComponent
+        AddPermissionComponent,
+        CreatePermissionComponent
     ],
     imports: [
         MatToolbarModule,
