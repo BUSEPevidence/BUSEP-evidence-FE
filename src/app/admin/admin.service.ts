@@ -61,7 +61,7 @@ export class AdminService {
     })
   }
   addPermission(dto: RolePermissionDTO) {
-    return this.http.post<string>(this.apiHost + "role/addPermissions", dto, {headers: this.headers}).subscribe(res => {
+    return this.http.post<string>(this.apiHost + "role/addPermission", dto, {headers: this.headers}).subscribe(res => {
       console.log(res);
       window.location.reload()
       
