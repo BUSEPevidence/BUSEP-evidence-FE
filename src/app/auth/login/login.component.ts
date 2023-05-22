@@ -38,4 +38,8 @@ export class LoginComponent {
     this.authService.login(this.user)
   }
 
+  public goToPasswordless() {
+    this.router.navigate(["/passwordless"]);
+  }
+
 }

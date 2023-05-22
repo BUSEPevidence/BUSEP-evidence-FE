@@ -18,7 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthComponent } from './auth.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideMenuComponent } from './side-menu/side-menu.component';
-
+import { MagicLoginComponent } from './magic-login/magic-login.component';
+import { MagicLinkComponent } from './magic-link/magic-link.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,14 @@ const routes: Routes = [
         path: 'register',
         component: RegisterComponent
       },
+      {
+        path: 'passwordless',
+        component: MagicLoginComponent
+      },
+      {
+        path: 'magic-link',
+        component: MagicLinkComponent
+      }
     ]
   }
 ]
@@ -45,6 +54,8 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     AuthComponent,
+    MagicLoginComponent,
+    MagicLinkComponent
   ],
   imports: [
     MatToolbarModule,
