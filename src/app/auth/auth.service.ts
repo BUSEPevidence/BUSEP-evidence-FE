@@ -4,6 +4,7 @@ import { RegisterUser } from './login/model/RegisterUser';
 import { LoginUser } from './login/model/LoginUser';
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
 interface TokenInterface
 {
   token:string;
@@ -45,6 +46,37 @@ executed = false;
   }
   return null;
   }
+
+  public magicLinkEntered() {
+    const enteredURL = window.location.href;
+    console.log("Usao na link: " + enteredURL);
+    let paramIndex = enteredURL.indexOf('?token=');
+    let param = paramIndex !== -1 ? enteredURL.substring(paramIndex + 7) : '';
+    let magicLinkValid : boolean = false;
+  // Split the URL to get the magicLinkId
+    let magicLinkIdIndex = enteredURL.indexOf('&id=');
+    let magicLinkId = magicLinkIdIndex !== -1 ? enteredURL.substring(magicLinkIdIndex + 4) : '';
+    
+    console.log("Token: " + param);
+    console.log("Magic link id: " + magicLinkId);
+
+    return this.http.get<TokenInterface>(this.apiHost + 'api/auth/magic-link?token=' + param + '&id=' + magicLinkId, {headers : this.headers}).pipe(
+      catchError(error => {
+        if (error.status === 401) {
+          this.router.navigate(['magic-link'])
+        }
+        return throwError(() => new Error(error));
+      })
+    ).subscribe(
+      res => {
+        localStorage.setItem('token',res.token);
+        localStorage.setItem('refreshToken',res.refreshToken);
+        this.getRoles(this.getDecodedAccessToken(res.token).sub);
+      }
+    );
+  }
+
+
   public register(user: RegisterUser) {
     return this.http.post<RegisterUser>(this.apiHost + 'api/auth/register',user, { headers: this.headers }).subscribe(res => {
       console.log(res)
@@ -89,6 +121,11 @@ executed = false;
       localStorage.setItem('refreshToken',res.refreshToken)
       this.getRoles(this.getDecodedAccessToken(res.token).sub)
   });
+  }
+
+  public magicLogin(username: String) {
+    const postBody = "{\"username\":\"" + username + "\"}";
+    return this.http.post(this.apiHost + 'api/auth/passwordless', postBody,{ headers: this.headers }).subscribe( () => console.log("USPJESAN PASSWORDLESS"));
   }
 
 }

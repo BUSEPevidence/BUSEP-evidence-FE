@@ -57,3 +57,14 @@ body {
 .login-form button[type="submit"]:hover {
   background-color: #00d9ff;
 }
+
+.nav-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #0e424b;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+}
