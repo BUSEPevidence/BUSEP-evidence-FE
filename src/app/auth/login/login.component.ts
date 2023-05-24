@@ -11,6 +11,8 @@ import { LoginUser } from './model/LoginUser';
 export class LoginComponent {
   constructor(private router: Router,private authService : AuthService) { }
 
+  username: string = ''
+  password: string = ''
   public user: LoginUser = {
     username: '',
     password: '',
@@ -40,6 +42,20 @@ export class LoginComponent {
 
   public goToPasswordless() {
     this.router.navigate(["/passwordless"]);
+  }
+  validateUsername() : boolean{
+    const usernamePattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    if(!this.username.match(usernamePattern)){
+      return false
+    } 
+    return true
+  }
+  validatePassword() : boolean{
+    const passwordPattern = /^(?=.*\d).+$/;
+    if(!this.password.match(passwordPattern)){
+      return false
+    } 
+    return true
   }
 
 }

@@ -2,39 +2,76 @@
     <h2>Registration Form</h2>
     <form class="register-form" action="/register" method="POST">
       <label for="firstname">First Name:</label>
-      <input type="text" id="firstname" name="firstname" required>
-  
+      <input type="text" id="firstname" name="firstname" [(ngModel)]="firstname" (ngModelChange)="onFirstnameChange()" required>
+      <div>
+        <div *ngIf="!validateFirstname()">
+          <span style="color:red">Bad Firstname.</span>
+        </div>
+      </div>
       <label for="lastname">Last Name:</label>
-      <input type="text" id="lastname" name="lastname" required>
-  
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required>
-  
+      <input type="text" id="lastname" name="lastname" [(ngModel)]="lastname" (ngModelChange)="onLastnameChange()" required>
+      <div>
+        <div *ngIf="!validateLastname()">
+          <span style="color:red">Bad Lastname.</span>
+        </div>
+      </div>
+      <label for="username">Email:</label>
+      <input type="text" id="username" name="username" [(ngModel)]="username" (ngModelChange)="onUsernameChange()" required>
+      <div>
+        <div *ngIf="!validateUsername()">
+          <span style="color:red">Bad Email.</span>
+        </div>
+      </div>
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
-  
+      <input type="password" id="password" name="password" [(ngModel)]="password" (ngModelChange)="onPasswordChange()" required>
+      <div>
+        <div *ngIf="!validatePassword()">
+          <span style="color:red">Bad Password.</span>
+        </div>
+      </div>
       <label for="password">Repeat Password:</label>
-      <input type="password" id="passwordd" name="password" required>
-  
+      <input type="password" id="passwordd" name="password" [(ngModel)]="repeater" required>
+      <div>
+        <div *ngIf="!validateRepeat()">
+          <span style="color:red">Different passwords.</span>
+        </div>
+      </div>
       <label for="address">Address:</label>
-      <input type="text" id="address" name="address" required>
-  
+      <input type="text" id="address" name="address" [(ngModel)]="address" (ngModelChange)="onAddressChange()" required>
+      <div>
+        <div *ngIf="!validateAddress()">
+          <span style="color:red">Bad Address.</span>
+        </div>
+      </div>
       <label for="city">City:</label>
-      <input type="text" id="city" name="city" required>
-  
+      <input type="text" id="city" name="city" [(ngModel)]="city" (ngModelChange)="onCityChange()" required>
+      <div>
+        <div *ngIf="!validateCity()">
+          <span style="color:red">Bad City.</span>
+        </div>
+      </div>
       <label for="state">State:</label>
-      <input type="text" id="state" name="state" required>
-  
+      <input type="text" id="state" name="state" [(ngModel)]="state" (ngModelChange)="onStateChange()" required>
+      <div>
+        <div *ngIf="!validateState()">
+          <span style="color:red">Bad State.</span>
+        </div>
+      </div>
       <label for="number">Phone Number:</label>
-      <input type="text" id="number" name="number" required>
-  
+      <input type="text" id="number" name="number" [(ngModel)]="number" (ngModelChange)="onNumberChange()" required>
+      <div>
+        <div *ngIf="!validateNumber()">
+          <span style="color:red">Bad Number.</span>
+        </div>
+      </div>
       <label for="title">Role:</label>
       <div class="radio-group">
         <label for="ROLE_ENGINEER"><input type="checkbox" id="ROLE_ENGINEER" name="title" required> Engineer</label>
         <label for="ROLE_MANAGER"><input type="checkbox" id="ROLE_MANAGER" name="title" required> Manager</label>
         <label for="ROLE_HR"><input type="checkbox" id="ROLE_HR" name="title" required> HR</label>
+        <label for="ROLE_ADMIN" *ngIf="isAdmin()"><input type="checkbox" id="ROLE_ADMIN" name="title" required> Admin</label>
       </div>
   
-      <button type="submit" (click)="register()">Register</button>
+      <button type="submit" (click)="register()" *ngIf="validate()">Register</button>
     </form>
   </div>

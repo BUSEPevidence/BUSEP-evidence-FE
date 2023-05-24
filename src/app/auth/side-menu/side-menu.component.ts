@@ -58,6 +58,26 @@ export class SideMenuComponent implements OnInit {
         return true;
     return false;
   }
+  isHiddenAdmin()
+  {
+    var rol : any;
+    var check : boolean = false
+    var role: string = "";
+    
+    if(localStorage.getItem('role') != null)
+    {
+      rol = localStorage.getItem('role')
+      role = rol + ""
+      role.split(',').forEach((item: string) => {
+        if(item == "ROLE_ADMIN")
+          check = true
+      });
+    }
+    if(check)
+      return false
+    return true
+
+  }
 
   isHiddenLogout() {
     if(localStorage.getItem('token') == null)
