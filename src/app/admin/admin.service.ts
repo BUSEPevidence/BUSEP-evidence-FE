@@ -8,6 +8,9 @@ import { RegisterUser } from '../auth/login/model/RegisterUser';
 import { RolePermissionDTO } from './model/RolePermissionDTO';
 import { RolePermDTO } from './model/RolePermDTO';
 import { PermissionDTO } from './model/PermissionDTO';
+import { EmployeeDTO } from './model/employeeDTO';
+import { ProjectDTO } from './model/ProjectDTO';
+import { CreateProjectDTO } from './model/CreateProjectDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -72,6 +75,12 @@ export class AdminService {
       
     })
   }
+
+  createProject(dto: CreateProjectDTO) {
+    return this.http.post<string>(this.apiHost + "api/project", dto, {headers:this.headers}).subscribe(res => {
+
+    });
+  }
     
   getRequests():(RegisterUser[]) {
     var c : string = ""
@@ -97,6 +106,45 @@ export class AdminService {
   
   return resultList
   }
+
+  getAllEmployees(): (EmployeeDTO[]) {
+    const resultList: EmployeeDTO[] = [];
+    this.http.get<EmployeeDTO[]>(this.apiHost + "api/user/all-workers", {headers: this.headers}).subscribe(res => {
+      res.forEach(e => {
+        const newEmployee: EmployeeDTO = {
+          username: e.username,
+          firstname: e.firstname,
+          lastname: e.lastname,
+          address: e.address,
+          city: e.city,
+          state: e.state,
+          number: e.number,
+          roles: e.roles
+        };
+        resultList.push(newEmployee);
+      });
+    });
+    return resultList;
+  }
+
+  getAllProjects(): (ProjectDTO[]) {
+    const resultList: ProjectDTO[] = [];
+    this.http.get<ProjectDTO[]>(this.apiHost + "api/project", {headers: this.headers}).subscribe(res => {
+      res.forEach(p => {
+        const newProject: ProjectDTO = {
+          id: p.id,
+          title: p.title,
+          description: p.description,
+          startTime: p.startTime,
+          endTime: p.endTime
+        };
+        resultList.push(newProject);
+      });
+    });
+    return resultList;
+  }
+
+
   getPerms():(RolePermissionDTO[]) {
     var c : string = ""
     const resultList: RolePermissionDTO[] = [];

@@ -24,6 +24,9 @@ import { AcceptRequestComponent } from './accept-request/accept-request.componen
 import { AdminGuard } from "../auth/model/admin.guard";
 import { AddPermissionComponent } from './add-permission/add-permission.component';
 import { CreatePermissionComponent } from './create-permission/create-permission.component';
+import { AllEmployeesComponent } from "./all-employees/all-employees.component";
+import { AllProjectsComponent } from "./all-projects/all-projects.component";
+import { CreateProjectComponent } from "./create-project/create-project.component";
 
 
 
@@ -56,6 +59,18 @@ const routes: Routes = [
             {
                 path: 'create-permission',
                 component:CreatePermissionComponent
+            },
+            {
+                path: 'all-employees',
+                component: AllEmployeesComponent
+            },
+            {
+                path: 'all-projects',
+                component: AllProjectsComponent
+            },
+            {
+                path: 'create-project',
+                component: CreateProjectComponent
             }
         ]
     }
@@ -70,7 +85,10 @@ const routes: Routes = [
         AdminComponent,
         AcceptRequestComponent,
         AddPermissionComponent,
-        CreatePermissionComponent
+        CreatePermissionComponent,
+        AllEmployeesComponent,
+        AllProjectsComponent,
+        CreateProjectComponent
     ],
     imports: [
         MatToolbarModule,
