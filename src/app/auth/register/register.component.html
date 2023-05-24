@@ -33,6 +33,7 @@
         <label for="ROLE_ENGINEER"><input type="checkbox" id="ROLE_ENGINEER" name="title" required> Engineer</label>
         <label for="ROLE_MANAGER"><input type="checkbox" id="ROLE_MANAGER" name="title" required> Manager</label>
         <label for="ROLE_HR"><input type="checkbox" id="ROLE_HR" name="title" required> HR</label>
+        <label for="ROLE_ADMIN" *ngIf="isAdmin()"><input type="checkbox" id="ROLE_ADMIN" name="title" required> Admin</label>
       </div>
   
       <button type="submit" (click)="register()">Register</button>

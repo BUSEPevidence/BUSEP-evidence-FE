@@ -62,6 +62,7 @@ export class RegisterComponent {
     this.user.state = state;
     this.user.number = number;
     this.user.adminApprove = false;
+    if(this.isAdmin())this.user.adminApprove = true;
   } else {
     console.log('Input elements not found');
   }
@@ -76,6 +77,27 @@ export class RegisterComponent {
 public register(){
   this.findChecked();
   this.authService.register(this.user)
+
+}
+public isAdmin()
+{
+  var rol : any;
+  var check : boolean = false
+  var role: string = "";
+  if(localStorage.getItem('role') == null)return false
+  
+  if(localStorage.getItem('role') != null)
+  {
+    rol = localStorage.getItem('role')
+    role = rol + ""
+    role.split(',').forEach((item: string) => {
+      if(item == "ROLE_ADMIN")
+        check = true
+    });
+  }
+  if(check)
+    return true
+  return false
 
 }
 

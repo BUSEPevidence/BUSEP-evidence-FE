@@ -35,6 +35,12 @@
         </a> -->
     </div>
     <div class="bottom-menu">
+        <a [routerLink]="['/admin']"  [hidden]="isHiddenAdmin()">
+            <div class="item">
+                <mat-icon aria-hidden="false" aria-label="Login icon" fontIcon="Admin"></mat-icon>
+                <div class="tooltip">Admin</div>
+            </div>
+        </a>
         <a [routerLink]="['/register']">
             <div class="item">
                 <mat-icon aria-hidden="false" aria-label="Register icon" fontIcon="Register"></mat-icon>
