@@ -25,4 +25,8 @@ export class AllProjectsComponent implements OnInit {
     this.router.navigate(["/admin/create-project"])
   }
 
+  viewEmployeesForProject(p : ProjectDTO) {
+    this.router.navigate(['/admin/project-employees', p.id])
+  }
+
 }

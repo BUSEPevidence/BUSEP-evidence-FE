@@ -11,6 +11,8 @@ import { PermissionDTO } from './model/PermissionDTO';
 import { EmployeeDTO } from './model/employeeDTO';
 import { ProjectDTO } from './model/ProjectDTO';
 import { CreateProjectDTO } from './model/CreateProjectDTO';
+import { start } from '@popperjs/core';
+import { AddWorkerToProjectDTO } from './model/AddWorkerToProjectDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -127,6 +129,46 @@ export class AdminService {
     return resultList;
   }
 
+  getProjectEmployees(id: number): (EmployeeDTO[]) {
+    const resultList: EmployeeDTO[] = [];
+    this.http.get<EmployeeDTO[]>(this.apiHost + "api/project/active-workers?projectId=" + id, {headers: this.headers}).subscribe(res => {
+      res.forEach(e => {
+        const newEmployee: EmployeeDTO = {
+          username: e.username,
+          firstname: e.firstname,
+          lastname: e.lastname,
+          address: e.address,
+          city: e.city,
+          state: e.state,
+          number: e.number,
+          roles: e.roles
+        };
+        resultList.push(newEmployee);
+      });
+    });
+    return resultList;
+  }
+  
+  getAllNonEmployees(id: number): (EmployeeDTO[]) {
+    const resultList: EmployeeDTO[] = [];
+    this.http.get<EmployeeDTO[]>(this.apiHost + "api/project/non-workers?projectId=" + id, {headers: this.headers}).subscribe(res => {
+      res.forEach(e => {
+        const newEmployee: EmployeeDTO = {
+          username: e.username,
+          firstname: e.firstname,
+          lastname: e.lastname,
+          address: e.address,
+          city: e.city,
+          state: e.state,
+          number: e.number,
+          roles: e.roles
+        };
+        resultList.push(newEmployee);
+      });
+    });
+    return resultList;
+  }
+
   getAllProjects(): (ProjectDTO[]) {
     const resultList: ProjectDTO[] = [];
     this.http.get<ProjectDTO[]>(this.apiHost + "api/project", {headers: this.headers}).subscribe(res => {
@@ -142,6 +184,24 @@ export class AdminService {
       });
     });
     return resultList;
+  }
+
+  getSelectedProject(projId: number) : (ProjectDTO) {
+    const result: ProjectDTO ={
+      title : "",
+      description : "",
+      endTime : new Date,
+      startTime : new Date,
+      id : 0
+    }
+    this.http.get<ProjectDTO>(this.apiHost + "api/project/details?id=" + projId, {headers: this.headers}).subscribe( res => {
+      result.title = res.title;
+      result.description = res.description;
+      result.startTime = res.startTime;
+      result.endTime = res.endTime;
+      result.id = res.id;
+    })
+    return result;
   }
 
 
@@ -192,6 +252,12 @@ export class AdminService {
   });
   
   return resultList
+  }
+
+  addEmployeeToProject(dto: AddWorkerToProjectDTO) {
+    this.http.post<string>(this.apiHost + "api/project/add-worker", dto, {headers: this.headers}).subscribe( res=> {
+
+    })
   }
 
 

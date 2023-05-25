@@ -4,6 +4,7 @@ import { RegisterUser } from 'src/app/auth/login/model/RegisterUser';
 import { AdminService } from '../admin.service';
 import { RolePermissionDTO } from '../model/RolePermissionDTO';
 import { RolePermDTO } from '../model/RolePermDTO';
+import { AddWorkerToProjectDTO } from '../model/AddWorkerToProjectDTO';
 
 @Component({
   selector: 'app-add-permission',
@@ -66,10 +67,6 @@ export class AddPermissionComponent {
     if (this.roleList.length > 0) {
       this.selectedRole = this.roleList[0];
     }
-    
-    
   }
-
- 
 
 }

@@ -27,6 +27,7 @@ import { CreatePermissionComponent } from './create-permission/create-permission
 import { AllEmployeesComponent } from "./all-employees/all-employees.component";
 import { AllProjectsComponent } from "./all-projects/all-projects.component";
 import { CreateProjectComponent } from "./create-project/create-project.component";
+import { ProjectEmployeesComponent } from "./project-employees/project-employees.component";
 
 
 
@@ -71,6 +72,10 @@ const routes: Routes = [
             {
                 path: 'create-project',
                 component: CreateProjectComponent
+            },
+            {
+                path: 'project-employees/:id',
+                component: ProjectEmployeesComponent
             }
         ]
     }
@@ -88,7 +93,8 @@ const routes: Routes = [
         CreatePermissionComponent,
         AllEmployeesComponent,
         AllProjectsComponent,
-        CreateProjectComponent
+        CreateProjectComponent,
+        ProjectEmployeesComponent
     ],
     imports: [
         MatToolbarModule,
