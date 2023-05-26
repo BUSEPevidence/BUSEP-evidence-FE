@@ -5,6 +5,8 @@ import { MenuService } from "../menu.service";
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AdminService } from "src/app/admin/admin.service";
+import { AuthService } from "../auth.service";
 
 
 
@@ -38,6 +40,7 @@ export class SideMenuComponent implements OnInit {
   constructor(
     private readonly menuService: MenuService,
     private readonly router: Router,
+    private readonly authService : AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -74,11 +77,19 @@ export class SideMenuComponent implements OnInit {
       });
     }
     if(check)
-      return false
+      if(this.isAdmin())
+        return false
     return true
 
   }
-
+  isAdmin() : boolean
+  {
+    var hide = localStorage.getItem('hide')
+    if(hide!= null)
+      if(hide == "1")
+        return false
+    return true
+  }
   isHiddenLogout() {
     if(localStorage.getItem('token') == null)
         return true;
