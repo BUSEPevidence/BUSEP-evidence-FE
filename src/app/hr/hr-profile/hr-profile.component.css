@@ -1,0 +1,116 @@
+.profile-view {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 60px;
+    padding-left: 200px;
+}
+
+.user-details h2 {
+    color: #0e424b;
+    font-weight: bold;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    padding: 8px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button-group button {
+    padding: 8px 12px;
+    background-color: #06b6d4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.button-group button:last-child {
+    margin-right: 0;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f1f1f1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal h3 {
+    margin-top: 0;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.modal input[type="password"],
+.modal input[type="text"] {
+    padding: 8px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons button {
+    padding: 8px 12px;
+    margin-right: 10px;
+    background-color: #06b6d4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: #0491a1;
+}
+
+.buttons button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

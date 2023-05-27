@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,15 +18,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ManagerComponent } from "./manager.component";
 import { ManGuard } from "../auth/model/manager.guard";
+import { ManagerProfileComponent } from './manager-profile/manager-profile.component';
 
 
 
 const routes: Routes = [
     {
         path: 'manager',
-        component:ManagerComponent,
+        component: ManagerComponent,
         canActivate: [ManGuard],
         children: [
+            {
+                path: 'info',
+                component: ManagerProfileComponent
+            },
         ]
     }
 ]
@@ -34,8 +39,9 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         SideMenuComponent,
-        ManagerComponent
-        
+        ManagerComponent,
+        ManagerProfileComponent
+
     ],
     imports: [
         MatToolbarModule,
@@ -52,6 +58,8 @@ const routes: Routes = [
         MatSnackBarModule,
         MatRadioModule,
         MatSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
         ToastrModule.forRoot(),
         RouterModule.forChild(routes)
     ],
