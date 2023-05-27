@@ -27,6 +27,18 @@
                 <div class="tooltip">Create Permission</div>
             </div>
         </a>
+        <a [routerLink]="['/admin/all-employees']" [hidden]="isHiddenLogout()" >
+            <div class="item" >
+                <mat-icon aria-hidden="false" aria-label="All employees" fontIcon="people"></mat-icon>
+                <div class="tooltip">All Employees</div>
+            </div>
+        </a>
+        <a [routerLink]="['/admin/all-projects']" [hidden]="isHiddenLogout()" >
+            <div class="item" >
+                <mat-icon aria-hidden="false" aria-label="All projects" fontIcon="handyman"></mat-icon>
+                <div class="tooltip">All Projects</div>
+            </div>
+        </a>
         
     
     </div>
