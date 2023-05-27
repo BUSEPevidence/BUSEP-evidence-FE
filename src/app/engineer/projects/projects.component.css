@@ -1,0 +1,145 @@
+.table-wrapper {
+    width: 80%;
+    margin: 20px auto;
+    margin-top: 20px;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.user-table th {
+    background-color: #0e424b;
+    color: white;
+    font-weight: bold;
+}
+
+.user-table tbody tr:nth-child(even) {
+    background-color: #00d9ff;
+}
+
+.user-table ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user-table ul li {
+    margin-bottom: 5px;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f1f1f1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal h3 {
+    margin-top: 0;
+}
+
+.modal p {
+    margin-bottom: 10px;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.modal textarea,
+.modal input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.modal button {
+    padding: 8px 12px;
+    margin-right: 10px;
+    background-color: #06b6d4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttons button {
+    margin-left: 10px;
+}
+
+.modal button:hover {
+    background-color: #0491a1;
+}
+
+.modal button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.modal input[type="text"] {
+    width: 300px;
+}
+
+.modal textarea {
+    width: 300px;
+    height: 60px;
+    /* Adjust the width to your preference */
+}
+
+.modal .form-group {
+    margin-bottom: 20px;
+}
+
+.button-toggle {
+    padding: 8px 16px;
+    background-color: #439dac;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.button-toggle.active {
+    background-color: #0e424b;
+}
+
+.button-toggle:hover {
+    background-color: #0e424b;
+}
+
+.button-toggle.active:hover {
+    background-color: #439dac;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+}

@@ -1,0 +1,64 @@
+<div class="table-wrapper">
+    <div *ngIf="!showActiveProjects">
+        <h1>All Projects</h1>
+    </div>
+    <div *ngIf="showActiveProjects">
+        <h1>Active Projects</h1>
+    </div>
+
+
+    <button class="button-toggle" [ngClass]="{ 'active': showActiveProjects }" (click)="toggleActiveProjects()">
+        {{ showActiveProjects ? 'Show All Projects' : 'Show Active Projects' }}
+    </button>
+
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>Project Start Time</th>
+                <th>Project End Time</th>
+                <th>Details And Updates</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dto of displayedProjects">
+                <td>{{ dto.project.title }}</td>
+                <td>{{ formatDate(dto.project.startTime) }}</td>
+                <td>{{ formatDate(dto.project.endTime) }}</td>
+                <td>
+                    <button class="button-toggle" (click)="showProjectDetails(dto)">Details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="selectedProject" class="modal">
+        <h3>Project Details</h3>
+        <p><b>Project Name:</b> {{ selectedProject.project.title }}</p>
+        <p><b>Project Start Time:</b> {{ formatDate(selectedProject.project.startTime) }}</p>
+        <p><b>Project End Time:</b> {{ formatDate(selectedProject.project.endTime) }}</p>
+
+        <div *ngIf="showActiveProjects">
+            <div class="form-group">
+                <label for="workDescription">Work Description:</label>
+                <textarea id="workDescription" [(ngModel)]="selectedProject.workDescription"
+                    [disabled]="!editWorkDescription" (blur)="updateWorkDescription()"></textarea>
+                <button (click)="toggleEditWorkDescription()">Edit Work Description</button>
+            </div>
+        </div>
+        <div *ngIf="!showActiveProjects">
+            <p><b>Work Description:</b> {{ selectedProject.workDescription }}</p>
+        </div>
+
+        <div class="form-group">
+            <label for="experience">Experience:</label>
+            <input type="text" id="experience" [(ngModel)]="selectedProject.experience" [disabled]="!editExperience"
+                (blur)="updateExperience()">
+            <button (click)="toggleEditExperience()">Edit Experience</button>
+        </div>
+
+        <div class="buttons">
+            <button (click)="closeModal()">Close</button>
+        </div>
+    </div>
+</div>

@@ -20,6 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { MagicLoginComponent } from './magic-login/magic-login.component';
 import { MagicLinkComponent } from './magic-link/magic-link.component';
+import { FirstLoginComponent } from './first-login/first-login.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path: 'magic-link',
         component: MagicLinkComponent
+      },
+      {
+        path: 'first-login',
+        component: FirstLoginComponent
       }
     ]
   }
@@ -55,7 +60,8 @@ const routes: Routes = [
     RegisterComponent,
     AuthComponent,
     MagicLoginComponent,
-    MagicLinkComponent
+    MagicLinkComponent,
+    FirstLoginComponent
   ],
   imports: [
     MatToolbarModule,

@@ -93,6 +93,7 @@ executed = false;
   }
   public getRoles(user: string) {
     var ret : string = ""
+    var checker : boolean = false;
      this.http.get<RolesInterface>(this.apiHost + 'api/auth/getRoles?request='+user, { headers: this.headers }).subscribe(res => {
       localStorage.setItem('role',res.roles)
       var rol : any;
@@ -102,7 +103,22 @@ executed = false;
           role = rol + ""
           role.split(',').forEach((item: string) => {
             if(item == "ROLE_ADMIN")
-              check = "/admin"
+            {
+              console.log(user)
+              this.http.get<boolean>(this.apiHost + 'admin/check-time?username='+user, { headers: this.headers }).subscribe(res => {
+                console.log(res + " res")
+                check = "/admin"
+                checker = res
+                
+                if(!res)
+                {
+                  localStorage.setItem('hide','1')
+                  this.router.navigate(["/first-login"]);
+                }
+              })
+     
+              
+            }
               if(item == "ROLE_ENGINEER")
               check = "/engineer"
               if(item == "ROLE_HR")
@@ -111,6 +127,10 @@ executed = false;
               check = "/manager"
               
           });
+          console.log(checker)
+          if(checker)
+            this.router.navigate(["/first-login"]);
+          else
             this.router.navigate([check]);
   });
   }
@@ -122,6 +142,37 @@ executed = false;
       this.getRoles(this.getDecodedAccessToken(res.token).sub)
   });
   }
+  public resetPassword(user: LoginUser) {
+    var tkn = localStorage.getItem('token')
+    var userr
+    if(tkn != null)
+      userr = this.getDecodedAccessToken(tkn).sub
+    user.username = userr
+    return this.http.post<string>(this.apiHost + 'admin/password',user, { headers: this.headers }).subscribe(res => {
+  });
+  }
+  public flagUp() {
+    var tkn = localStorage.getItem('token')
+    var userr
+    if(tkn != null)
+      userr = this.getDecodedAccessToken(tkn).sub
+    return this.http.get<string>(this.apiHost + 'admin/first-login?id=' + userr, { headers: this.headers }).subscribe(res => {
+    console.log(res)
+    this.router.navigate(["/login"]);
+  });
+  }
+  public isAdminView() : boolean {
+    var tkn = localStorage.getItem('token')
+    var user
+    if(tkn != null)
+      user = this.getDecodedAccessToken(tkn).sub
+    var checker : boolean = false
+      this.http.get<boolean>(this.apiHost + 'admin/check-time?username='+user, { headers: this.headers }).subscribe(res => {
+      checker = res
+  });
+  return checker
+  }
+
 
   public magicLogin(username: String) {
     const postBody = "{\"username\":\"" + username + "\"}";

@@ -1,0 +1,115 @@
+<div class="profile-view">
+    <div class="wrapper">
+        <div class="user-details">
+            <h2>User Information</h2>
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" [readonly]="true" value="{{ user.username }}">
+            </div>
+            <div class="input-group">
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" [(ngModel)]="user.firstname">
+            </div>
+            <div class="input-group">
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" [(ngModel)]="user.lastname">
+            </div>
+            <div class="input-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" [(ngModel)]="user.address">
+            </div>
+            <div class="input-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" [(ngModel)]="user.city">
+            </div>
+            <div class="input-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" [(ngModel)]="user.state">
+            </div>
+            <div class="input-group">
+                <label for="number">Number:</label>
+                <input type="text" id="number" [(ngModel)]="user.number">
+            </div>
+            <div class="button-group">
+                <button class="save-button" (click)="saveChanges()">Save Changes</button>
+                <button class="change-password-button" (click)="openChangePasswordModal()">Change Password</button>
+            </div>
+        </div>
+        <div class="engineer-container">
+            <h2>Engineer details</h2>
+            <div class="engineer-details">
+                <div class="input-group">
+                    <label for="seniority">Seniority:</label>
+                    <input type="text" id="seniority" [readonly]="true" value="{{ engineer.details.seniority }}">
+                </div>
+                <div class="input-group">
+                    <div class="cv-container">
+                        <label for="cvUrl">CV:</label>
+                        <div class="cv-content">
+                            <ng-container *ngIf="engineer.details.CvUrl !== ''; else noCVUploaded">
+                                <button (click)="openCV()">View CV</button>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <ng-template #noCVUploaded>
+                        <p class="no-cv">No CV uploaded</p>
+                    </ng-template>
+                    <input type="file" id="cvUpload" (change)="handleCVUpload($event)" enctype="multipart/form-data">
+                </div>
+            </div>
+            <div class="experiences">
+                <div class="experience-header">
+                    <h2>Experiences</h2>
+                    <button class="add-experience-button" (click)="openNewExperienceModal()">Add Experience</button>
+                </div>
+                <div class="experience-list">
+                    <ul>
+                        <li *ngFor="let experience of engineer.experiences">{{ experience.title }} - Grade: {{
+                            experience.grade }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="newExperienceModalVisible" class="modal">
+        <!-- New Experience Modal Content -->
+        <h3>Add New Experience</h3>
+        <div class="form-group">
+            <label for="experienceTitle">Title:</label>
+            <input type="text" id="experienceTitle" [(ngModel)]="newExperience.title">
+        </div>
+        <div class="form-group">
+            <label for="experienceGrade">Grade:</label>
+            <input type="number" id="experienceGrade" [(ngModel)]="newExperience.grade">
+        </div>
+        <div class="buttons">
+            <button (click)="closeNewExperienceModal()">Cancel</button>
+            <button (click)="addExperience()">Save</button>
+        </div>
+    </div>
+    <div *ngIf="changePasswordModalVisible" class="modal">
+        <!-- Change Password Modal Content -->
+        <h3>Change Password</h3>
+        <form [formGroup]="changePasswordForm">
+            <div class="form-group">
+                <label for="currentPassword">Current Password:</label>
+                <input type="password" id="currentPassword" formControlName="currentPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">New Password:</label>
+                <input type="password" id="newPassword" formControlName="newPassword" required>
+                <!-- Password validation error messages -->
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" formControlName="confirmPassword" required>
+                <!-- Password validation error messages -->
+            </div>
+            <div class="buttons">
+                <button (click)="closeChangePasswordModal()">Cancel</button>
+                <button (click)="changePasswords()"
+                    [disabled]="changePasswordForm.invalid || !passwordsMatch()">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -47,13 +47,13 @@
                 <div class="tooltip">Register</div>
             </div>
         </a>
-        <a [routerLink]="['/login']" >
+        <a [routerLink]="['/login']" [hidden]="!isHiddenAdmin()" >
             <div class="item">
                 <mat-icon aria-hidden="false" aria-label="Login icon" fontIcon="Login"></mat-icon>
                 <div class="tooltip">Login</div>
             </div>
         </a>
-        <a [routerLink]="['/passwordless']" >
+        <a [routerLink]="['/passwordless']" [hidden]="!isHiddenAdmin()" >
             <div class="item">
                 <mat-icon aria-hidden="false" aria-label="Magic login icon" fontIcon="Magic"></mat-icon>
                 <div class="tooltip">Magic login</div>
