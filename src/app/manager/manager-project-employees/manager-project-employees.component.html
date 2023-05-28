@@ -29,6 +29,9 @@
       <th>Address</th>
       <th>Phone number</th>
       <th>Roles</th>
+      <th>Started working</th>
+      <th>Stopped working</th>
+      <th>Remove</th>
     </tr>
   </thead>
   <tbody>
@@ -39,6 +42,10 @@
       <td>{{ employee.address }} {{employee.city}} {{employee.state}}</td>
       <td>{{ employee.number}}</td>
       <td>{{ employee.roles }}</td>
+      <td>{{ employee.startedWorking }}</td>
+      <td>{{ employee.endedWorking }}</td>
+      <td><button class="deny-btn" (click)="removeEmployeeFromProject(employee)"><mat-icon>delete</mat-icon></button></td>
+      <td></td>
     </tr>
   </tbody>
 </table>

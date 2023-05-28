@@ -9,6 +9,12 @@
                 <div class="tooltip">Home</div>
             </div>
         </a>
+        <a [routerLink]="['/manager/projects']" [hidden]="isHiddenLogout()" >
+            <div class="item" >
+                <mat-icon aria-hidden="false" aria-label="All projects" fontIcon="handyman"></mat-icon>
+                <div class="tooltip">All Projects</div>
+            </div>
+        </a>
         
     
     </div>

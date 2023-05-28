@@ -5,7 +5,6 @@
       <th>Description</th>
       <th>Start time</th>
       <th>End time</th>
-      <th>Assign employee</th>
       <th>View employees</th>
     </tr>
   </thead>
@@ -15,7 +14,6 @@
       <td>{{ p.description }}</td>
       <td>{{ p.startTime }}</td>
       <td>{{ p.endTime }}</td>
-      <td><button class="deny-btn"><mat-icon>assignment_ind</mat-icon></button></td>
       <td><button class="deny-btn" (click)="viewEmployeesForProject(p)"><mat-icon>view_list</mat-icon></button></td>
     </tr>
   </tbody>

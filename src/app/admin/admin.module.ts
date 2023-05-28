@@ -2,7 +2,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { MakeCertificateComponent } from "./make-certificate/make-certificate.component";
 import { NgModule } from "@angular/core";
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,7 +28,6 @@ import { AllEmployeesComponent } from "./all-employees/all-employees.component";
 import { AllProjectsComponent } from "./all-projects/all-projects.component";
 import { CreateProjectComponent } from "./create-project/create-project.component";
 import { ProjectEmployeesComponent } from "./project-employees/project-employees.component";
-
 
 
 const routes: Routes = [
@@ -94,7 +93,7 @@ const routes: Routes = [
         AllEmployeesComponent,
         AllProjectsComponent,
         CreateProjectComponent,
-        ProjectEmployeesComponent
+        ProjectEmployeesComponent,
     ],
     imports: [
         MatToolbarModule,
@@ -109,6 +108,7 @@ const routes: Routes = [
         MatTableModule,
         HttpClientModule,
         MatSnackBarModule,
+        FormsModule,
         MatRadioModule,
         MatSelectModule,
         ToastrModule.forRoot(),
