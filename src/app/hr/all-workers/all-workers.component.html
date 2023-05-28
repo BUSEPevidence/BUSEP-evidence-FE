@@ -1,0 +1,204 @@
+<div class="table-wrapper" *ngIf="users">
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Number</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.state }}</td>
+                <td>{{ user.number }}</td>
+                <td>
+                    <button class="button-toggle" (click)="showUserDetails(user)">Details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="engineerModalVisible && showEngineer" class="modal engineer">
+        <div class="wrapper">
+            <div class="user-details">
+                <h2>Engineer Information</h2>
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" [readonly]="true" value="{{ showEngineer.user.username }}">
+                </div>
+                <div class="input-group">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" [readonly]="true" value="{{ showEngineer.user.firstname}}">
+                </div>
+                <div class="input-group">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" [readonly]="true" value="{{ showEngineer.user.lastname}}">
+                </div>
+                <div class="input-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" [readonly]="true" value="{{ showEngineer.user.address}}">
+                </div>
+                <div class="input-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" [readonly]="true" value="{{ showEngineer.user.city}}">
+                </div>
+                <div class="input-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" [readonly]="true" value="{{ showEngineer.user.state}}">
+                </div>
+                <div class="input-group">
+                    <label for="number">Number:</label>
+                    <input type="text" id="number" [readonly]="true" value="{{ showEngineer.user.number}}">
+                </div>
+                <div class="button-group">
+                    <button class="change-password-button" (click)="openProjectsModal()">Projects</button>
+                    <button (click)="closeEngineerModal()">Cancel</button>
+                </div>
+            </div>
+            <div class="engineer-container">
+                <h2>Engineer details</h2>
+                <div class="engineer-details">
+                    <div class="input-group">
+                        <label for="seniority">Seniority:</label>
+                        <input type="text" id="seniority" [readonly]="true"
+                            value="{{ showEngineer.details.seniority }}">
+                    </div>
+                    <div class="input-group">
+                        <div class="cv-container">
+                            <label for="cvUrl">CV:</label>
+                            <div class="cv-content">
+                                <ng-container *ngIf="showEngineer.details.CvUrl !== ''; else noCVUploaded">
+                                    <button (click)="openCV()">View CV</button>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <ng-template #noCVUploaded>
+                            <p class="no-cv">No CV uploaded</p>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="experiences">
+                    <div class="experience-header">
+                        <h2>Experiences</h2>
+                    </div>
+                    <div class="experience-list">
+                        <ul>
+                            <li *ngFor="let experience of showEngineer.experiences">{{ experience.title }} - Grade: {{
+                                experience.grade }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="projectsModalVisible && projects" class="modal projects">
+            <div class="wrapper">
+                <div class="user-details">
+                    <h2>Projects Information</h2>
+                    <div class="table-wrapper">
+                        <table class="projects-table">
+                            <thead>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Project Start Time</th>
+                                    <th>Project End Time</th>
+                                    <th>Workers task</th>
+                                    <th>Workers experience</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let project of projects">
+                                    <td>{{ project.project.title }}</td>
+                                    <td>{{ formatDate(project.startedWorking) }}</td>
+                                    <td>{{ formatDate(project.endedWorking) }}</td>
+                                    <td>{{ project.workDescription }}</td>
+                                    <td>{{ project.experience }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="button-group">
+                        <button (click)="closeProjectsModal()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="userModalVisible && chosenUser" class="modal user">
+        <div class="wrapper">
+            <div class="user-details">
+                <h2>User Information</h2>
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" [readonly]="true" value="{{ chosenUser.username }}">
+                </div>
+                <div class="input-group">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" [readonly]="true" value="{{ chosenUser.firstname}}">
+                </div>
+                <div class="input-group">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" [readonly]="true" value="{{ chosenUser.lastname}}">
+                </div>
+                <div class="input-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" [readonly]="true" value="{{ chosenUser.address}}">
+                </div>
+                <div class="input-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" [readonly]="true" value="{{ chosenUser.city}}">
+                </div>
+                <div class="input-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" [readonly]="true" value="{{ chosenUser.state}}">
+                </div>
+                <div class="input-group">
+                    <label for="number">Number:</label>
+                    <input type="text" id="number" [readonly]="true" value="{{ chosenUser.number}}">
+                </div>
+                <div class="button-group">
+                    <button class="change-password-button" (click)="openProjectsModal()">Projects</button>
+                    <button (click)="closeUserModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="projectsModalVisible && projects" class="modal projects">
+            <div class="wrapper">
+                <div class="user-details">
+                    <h2>Projects Information</h2>
+                    <div class="table-wrapper">
+                        <table class="projects-table">
+                            <thead>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Project Start Time</th>
+                                    <th>Project End Time</th>
+                                    <th>Workers task</th>
+                                    <th>Workers experience</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let project of projects">
+                                    <td>{{ project.project.title }}</td>
+                                    <td>{{ formatDate(project.startedWorking) }}</td>
+                                    <td>{{ formatDate(project.endedWorking) }}</td>
+                                    <td>{{ project.workDescription }}</td>
+                                    <td>{{ project.experience }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="button-group">
+                        <button (click)="closeProjectsModal()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

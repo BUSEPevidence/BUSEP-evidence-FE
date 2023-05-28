@@ -9,29 +9,34 @@
                 <div class="tooltip">Home</div>
             </div>
         </a>
-        
-    
+        <a [routerLink]="['/manager/info']" [hidden]="isHiddenLogout()">
+            <div class="item">
+                <mat-icon aria-hidden="false" aria-label="Profile icon" fontIcon="person"></mat-icon>
+                <div class="tooltip">Profile</div>
+            </div>
+        </a>
+
     </div>
-   <div class="bottom-menu">
-    <a [routerLink]="['/engineer']"  [hidden]="isHiddenEngineer()">
-        <div class="item">
-            <mat-icon aria-hidden="false" aria-label="Register icon" fontIcon="Engineer"></mat-icon>
-            <div class="tooltip">Engineer</div>
-        </div>
-    </a>
-    <a [routerLink]="['/hr']" [hidden]="isHiddenHr()">
-        <div class="item">
-            <mat-icon aria-hidden="false" aria-label="Login icon" fontIcon="Hr"></mat-icon>
-            <div class="tooltip">Hr</div>
-        </div>
-    </a>
-    <a [routerLink]="['/admin']"  [hidden]="isHiddenAdmin()">
-        <div class="item">
-            <mat-icon aria-hidden="false" aria-label="Login icon" fontIcon="Admin"></mat-icon>
-            <div class="tooltip">Admin</div>
-        </div>
-    </a>
-        <a [routerLink]="['/register']" [hidden]="isHidden()" >
+    <div class="bottom-menu">
+        <a [routerLink]="['/engineer']" [hidden]="isHiddenEngineer()">
+            <div class="item">
+                <mat-icon aria-hidden="false" aria-label="Register icon" fontIcon="Engineer"></mat-icon>
+                <div class="tooltip">Engineer</div>
+            </div>
+        </a>
+        <a [routerLink]="['/hr']" [hidden]="isHiddenHr()">
+            <div class="item">
+                <mat-icon aria-hidden="false" aria-label="Login icon" fontIcon="Hr"></mat-icon>
+                <div class="tooltip">Hr</div>
+            </div>
+        </a>
+        <a [routerLink]="['/admin']" [hidden]="isHiddenAdmin()">
+            <div class="item">
+                <mat-icon aria-hidden="false" aria-label="Login icon" fontIcon="Admin"></mat-icon>
+                <div class="tooltip">Admin</div>
+            </div>
+        </a>
+        <a [routerLink]="['/register']" [hidden]="isHidden()">
             <div class="item">
                 <mat-icon aria-hidden="false" aria-label="Register icon" fontIcon="login"></mat-icon>
                 <div class="tooltip">Register</div>
@@ -49,8 +54,8 @@
                 <div class="tooltip">Logout</div>
             </div>
         </a>
-        
-        
+
+
     </div>
 
 </div>
