@@ -11,8 +11,10 @@ import { PermissionDTO } from './model/PermissionDTO';
 import { EmployeeDTO } from './model/employeeDTO';
 import { ProjectDTO } from './model/ProjectDTO';
 import { CreateProjectDTO } from './model/CreateProjectDTO';
-import { start } from '@popperjs/core';
 import { AddWorkerToProjectDTO } from './model/AddWorkerToProjectDTO';
+import { NewPasswordDTO } from '../hr/model/NewPasswordDTO';
+import { ShowUserDTO } from '../hr/model/ShowUserDTO';
+import { UpdateUserDTO } from '../hr/model/UpdateUserDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -26,92 +28,92 @@ export class AdminService {
   plainTextHeaders: HttpHeaders = new HttpHeaders({ 'Content-Type': 'text/plain' })
 
   getAllCertificates(): Observable<Certificate[]> {
-    return this.http.get<Certificate[]>(this.apiHost + 'admin/get-all-from-store', {headers: this.headers})
+    return this.http.get<Certificate[]>(this.apiHost + 'admin/get-all-from-store', { headers: this.headers })
   }
 
   revokeCertificate(alias: string) {
-    return this.http.post(this.apiHost + "admin/revoke-certificate", alias, {headers: this.headers, responseType: 'text' as 'text'})
+    return this.http.post(this.apiHost + "admin/revoke-certificate", alias, { headers: this.headers, responseType: 'text' as 'text' })
   }
   downloadCertificate(dto: downDTO) {
-    return this.http.post(this.apiHost + "admin/download-certificate", dto,{ headers: this.headers} )
+    return this.http.post(this.apiHost + "admin/download-certificate", dto, { headers: this.headers })
   }
-  
+
   checkValidity(alias: string) {
     let params = new HttpParams().set('alias', alias)
-    return this.http.get(this.apiHost + "admin/certificate-validity", {params: params, headers: this.headers, responseType: 'text' as 'text'} )
+    return this.http.get(this.apiHost + "admin/certificate-validity", { params: params, headers: this.headers, responseType: 'text' as 'text' })
   }
 
   makeRootCertificate(dto: MakeRootCertDTO) {
-    return this.http.post(this.apiHost + "admin/create-root", dto, {headers: this.headers, responseType: 'text' as 'text'})
+    return this.http.post(this.apiHost + "admin/create-root", dto, { headers: this.headers, responseType: 'text' as 'text' })
   }
   approveRequest(dto: RegisterUser) {
-    return this.http.post<string>(this.apiHost + "api/auth/approve", dto, {headers: this.headers}).subscribe(res => {
+    return this.http.post<string>(this.apiHost + "api/auth/approve", dto, { headers: this.headers }).subscribe(res => {
       console.log(res);
-      
+
     })
   }
   denieRequest(dto: RegisterUser) {
-    return this.http.post<string>(this.apiHost + "api/auth/denie", dto, {headers: this.headers}).subscribe(res => {
+    return this.http.post<string>(this.apiHost + "api/auth/denie", dto, { headers: this.headers }).subscribe(res => {
       console.log(res);
       window.location.reload()
-      
+
     })
   }
 
   deletePermission(dto: RolePermissionDTO) {
-    return this.http.post<string>(this.apiHost + "role/deletePermission", dto, {headers: this.headers}).subscribe(res => {
+    return this.http.post<string>(this.apiHost + "role/deletePermission", dto, { headers: this.headers }).subscribe(res => {
       console.log(res);
       window.location.reload()
-      
+
     })
   }
   addPermission(dto: RolePermissionDTO) {
-    return this.http.post<string>(this.apiHost + "role/addPermission", dto, {headers: this.headers}).subscribe(res => {
+    return this.http.post<string>(this.apiHost + "role/addPermission", dto, { headers: this.headers }).subscribe(res => {
       console.log(res);
       window.location.reload()
-      
+
     })
   }
   createPermission(dto: PermissionDTO) {
-    return this.http.post<string>(this.apiHost + "permission/addPermission", dto, {headers: this.headers}).subscribe(res => {
-      
+    return this.http.post<string>(this.apiHost + "permission/addPermission", dto, { headers: this.headers }).subscribe(res => {
+
     })
   }
 
   createProject(dto: CreateProjectDTO) {
-    return this.http.post<string>(this.apiHost + "api/project", dto, {headers:this.headers}).subscribe(res => {
+    return this.http.post<string>(this.apiHost + "api/project", dto, { headers: this.headers }).subscribe(res => {
 
     });
   }
-    
-  getRequests():(RegisterUser[]) {
-    var c : string = ""
+
+  getRequests(): (RegisterUser[]) {
+    var c: string = ""
     const resultList: RegisterUser[] = [];
-    this.http.get<RegisterUser[]>(this.apiHost + "admin/get-requests", {headers: this.headers}).subscribe(res => {
-    res.forEach(user => {
- 
-      const newUser: RegisterUser = {
-        username: user.username,
-        password: user.password,
-        firstname: user.firstname,
-        lastname: user.lastname,
-        address: user.address,
-        city: user.city,
-        state: user.state,
-        number: user.number,
-        title: user.title,
-        adminApprove: user.adminApprove
-      };
-      resultList.push(newUser);
+    this.http.get<RegisterUser[]>(this.apiHost + "admin/get-requests", { headers: this.headers }).subscribe(res => {
+      res.forEach(user => {
+
+        const newUser: RegisterUser = {
+          username: user.username,
+          password: user.password,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          address: user.address,
+          city: user.city,
+          state: user.state,
+          number: user.number,
+          title: user.title,
+          adminApprove: user.adminApprove
+        };
+        resultList.push(newUser);
+      });
     });
-  });
-  
-  return resultList
+
+    return resultList
   }
 
   getAllEmployees(): (EmployeeDTO[]) {
     const resultList: EmployeeDTO[] = [];
-    this.http.get<EmployeeDTO[]>(this.apiHost + "api/user/all-workers", {headers: this.headers}).subscribe(res => {
+    this.http.get<EmployeeDTO[]>(this.apiHost + "api/user/all-workers", { headers: this.headers }).subscribe(res => {
       res.forEach(e => {
         const newEmployee: EmployeeDTO = {
           username: e.username,
@@ -131,7 +133,7 @@ export class AdminService {
 
   getProjectEmployees(id: number): (EmployeeDTO[]) {
     const resultList: EmployeeDTO[] = [];
-    this.http.get<EmployeeDTO[]>(this.apiHost + "api/project/active-workers?projectId=" + id, {headers: this.headers}).subscribe(res => {
+    this.http.get<EmployeeDTO[]>(this.apiHost + "api/project/active-workers?projectId=" + id, { headers: this.headers }).subscribe(res => {
       res.forEach(e => {
         const newEmployee: EmployeeDTO = {
           username: e.username,
@@ -148,10 +150,10 @@ export class AdminService {
     });
     return resultList;
   }
-  
+
   getAllNonEmployees(id: number): (EmployeeDTO[]) {
     const resultList: EmployeeDTO[] = [];
-    this.http.get<EmployeeDTO[]>(this.apiHost + "api/project/non-workers?projectId=" + id, {headers: this.headers}).subscribe(res => {
+    this.http.get<EmployeeDTO[]>(this.apiHost + "api/project/non-workers?projectId=" + id, { headers: this.headers }).subscribe(res => {
       res.forEach(e => {
         const newEmployee: EmployeeDTO = {
           username: e.username,
@@ -171,7 +173,7 @@ export class AdminService {
 
   getAllProjects(): (ProjectDTO[]) {
     const resultList: ProjectDTO[] = [];
-    this.http.get<ProjectDTO[]>(this.apiHost + "api/project", {headers: this.headers}).subscribe(res => {
+    this.http.get<ProjectDTO[]>(this.apiHost + "api/project", { headers: this.headers }).subscribe(res => {
       res.forEach(p => {
         const newProject: ProjectDTO = {
           id: p.id,
@@ -186,15 +188,15 @@ export class AdminService {
     return resultList;
   }
 
-  getSelectedProject(projId: number) : (ProjectDTO) {
-    const result: ProjectDTO ={
-      title : "",
-      description : "",
-      endTime : new Date,
-      startTime : new Date,
-      id : 0
+  getSelectedProject(projId: number): (ProjectDTO) {
+    const result: ProjectDTO = {
+      title: "",
+      description: "",
+      endTime: new Date,
+      startTime: new Date,
+      id: 0
     }
-    this.http.get<ProjectDTO>(this.apiHost + "api/project/details?id=" + projId, {headers: this.headers}).subscribe( res => {
+    this.http.get<ProjectDTO>(this.apiHost + "api/project/details?id=" + projId, { headers: this.headers }).subscribe(res => {
       result.title = res.title;
       result.description = res.description;
       result.startTime = res.startTime;
@@ -205,62 +207,70 @@ export class AdminService {
   }
 
 
-  getPerms():(RolePermissionDTO[]) {
-    var c : string = ""
+  getPerms(): (RolePermissionDTO[]) {
+    var c: string = ""
     const resultList: RolePermissionDTO[] = [];
-    this.http.get<RolePermissionDTO[]>(this.apiHost + "role/getForDelete", {headers: this.headers}).subscribe(res => {
-    res.forEach(user => {
- 
-      const newUser: RolePermissionDTO = {
-        role: user.role,
-        permission: user.permission
-      };
-      resultList.push(newUser);
+    this.http.get<RolePermissionDTO[]>(this.apiHost + "role/getForDelete", { headers: this.headers }).subscribe(res => {
+      res.forEach(user => {
+
+        const newUser: RolePermissionDTO = {
+          role: user.role,
+          permission: user.permission
+        };
+        resultList.push(newUser);
+      });
     });
-  });
-  
-  return resultList
+
+    return resultList
   }
 
-  getAllPerms():(RolePermDTO[]) {
-    var c : string = ""
+  getAllPerms(): (RolePermDTO[]) {
+    var c: string = ""
     const resultList: RolePermDTO[] = [];
-    this.http.get<RolePermDTO[]>(this.apiHost + "permission/getAll", {headers: this.headers}).subscribe(res => {
-    res.forEach(user => {
- 
-      const newUser: RolePermDTO = {
-        name: user.name,
-      };
-      resultList.push(newUser);
+    this.http.get<RolePermDTO[]>(this.apiHost + "permission/getAll", { headers: this.headers }).subscribe(res => {
+      res.forEach(user => {
+
+        const newUser: RolePermDTO = {
+          name: user.name,
+        };
+        resultList.push(newUser);
+      });
     });
-  });
-  
-  return resultList
+
+    return resultList
   }
 
-  getAllRoles():(RolePermDTO[]) {
-    var c : string = ""
+  getAllRoles(): (RolePermDTO[]) {
+    var c: string = ""
     const resultList: RolePermDTO[] = [];
-    this.http.get<RolePermDTO[]>(this.apiHost + "role/getAll", {headers: this.headers}).subscribe(res => {
-    res.forEach(user => {
- 
-      const newUser: RolePermDTO = {
-        name: user.name,
-      };
-      resultList.push(newUser);
+    this.http.get<RolePermDTO[]>(this.apiHost + "role/getAll", { headers: this.headers }).subscribe(res => {
+      res.forEach(user => {
+
+        const newUser: RolePermDTO = {
+          name: user.name,
+        };
+        resultList.push(newUser);
+      });
     });
-  });
-  
-  return resultList
+
+    return resultList
   }
 
   addEmployeeToProject(dto: AddWorkerToProjectDTO) {
-    this.http.post<string>(this.apiHost + "api/project/add-worker", dto, {headers: this.headers}).subscribe( res=> {
+    this.http.post<string>(this.apiHost + "api/project/add-worker", dto, { headers: this.headers }).subscribe(res => {
 
     })
   }
 
+  public getUser(): Observable<ShowUserDTO> {
+    return this.http.get<ShowUserDTO>(this.apiHost + 'api/user/user', { headers: this.headers });
+  }
 
+  public updateUser(dto: UpdateUserDTO): Observable<string> {
+    return this.http.put<string>(this.apiHost + 'api/user/user', dto, { headers: this.headers });
+  }
 
-
+  public changePasswords(dto: NewPasswordDTO): Observable<string> {
+    return this.http.put<string>(this.apiHost + 'api/user/change-password', dto, { headers: this.headers });
+  }
 }

@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit {
         this.user = this.engineer.user;
       },
       error => {
-        console.error('Error updating work description:', error);
+        console.error('Error getting engineer:', error);
       }
     );
   }
@@ -142,5 +142,9 @@ export class ProfileComponent implements OnInit {
 
   openCV(): void {
     window.open(this.engineer.details.CvUrl, '_blank');
+  }
+
+  isUserLoaded(): boolean {
+    return this.user !== undefined;
   }
 }

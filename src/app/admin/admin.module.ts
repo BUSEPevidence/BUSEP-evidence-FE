@@ -2,7 +2,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { MakeCertificateComponent } from "./make-certificate/make-certificate.component";
 import { NgModule } from "@angular/core";
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,12 +28,13 @@ import { AllEmployeesComponent } from "./all-employees/all-employees.component";
 import { AllProjectsComponent } from "./all-projects/all-projects.component";
 import { CreateProjectComponent } from "./create-project/create-project.component";
 import { ProjectEmployeesComponent } from "./project-employees/project-employees.component";
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 
 const routes: Routes = [
     {
         path: 'admin',
-        component:AdminComponent,
+        component: AdminComponent,
         canActivate: [AdminGuard],
         children: [
             {
@@ -54,11 +55,11 @@ const routes: Routes = [
             },
             {
                 path: 'add-permission',
-                component:AddPermissionComponent
+                component: AddPermissionComponent
             },
             {
                 path: 'create-permission',
-                component:CreatePermissionComponent
+                component: CreatePermissionComponent
             },
             {
                 path: 'all-employees',
@@ -75,7 +76,11 @@ const routes: Routes = [
             {
                 path: 'project-employees/:id',
                 component: ProjectEmployeesComponent
-            }
+            },
+            {
+                path: 'info',
+                component: AdminProfileComponent
+            },
         ]
     }
 ]
@@ -94,10 +99,8 @@ const routes: Routes = [
         AllProjectsComponent,
         CreateProjectComponent,
         ProjectEmployeesComponent,
-    ],
-    imports: [
+        AdminProfileComponent,
         MatToolbarModule,
-        MatIconModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         CommonModule,
@@ -111,6 +114,8 @@ const routes: Routes = [
         FormsModule,
         MatRadioModule,
         MatSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
         ToastrModule.forRoot(),
         RouterModule.forChild(routes)
     ],

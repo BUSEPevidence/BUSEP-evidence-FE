@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,13 +20,14 @@ import { ManagerComponent } from "./manager.component";
 import { ManGuard } from "../auth/model/manager.guard";
 import { ManagersProjectsComponent } from "./managers-projects/managers-projects.component";
 import { ManagerProjectEmployeesComponent } from "./manager-project-employees/manager-project-employees.component";
+import { ManagerProfileComponent } from './manager-profile/manager-profile.component';
 
 
 
 const routes: Routes = [
     {
         path: 'manager',
-        component:ManagerComponent,
+        component: ManagerComponent,
         canActivate: [ManGuard],
         children: [
             {
@@ -36,7 +37,11 @@ const routes: Routes = [
             {
                 path: 'project-employees/:id',
                 component: ManagerProjectEmployeesComponent
-            }
+            },
+            {
+                path: 'info',
+                component: ManagerProfileComponent
+            },
         ]
     }
 ]
@@ -46,7 +51,9 @@ const routes: Routes = [
         SideMenuComponent,
         ManagerComponent,
         ManagersProjectsComponent,
-        ManagerProjectEmployeesComponent
+        ManagerProjectEmployeesComponent,
+        ManagerProfileComponent
+
     ],
     imports: [
         MatToolbarModule,
@@ -63,6 +70,8 @@ const routes: Routes = [
         MatSnackBarModule,
         MatRadioModule,
         MatSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
         ToastrModule.forRoot(),
         RouterModule.forChild(routes)
     ],

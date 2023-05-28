@@ -1,0 +1,350 @@
+.table-wrapper {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.user-table th {
+    background-color: #0e424b;
+    color: white;
+    font-weight: bold;
+}
+
+.user-table tbody tr:nth-child(even) {
+    background-color: #00d9ff;
+}
+
+.user-table ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user-table ul li {
+    margin-bottom: 5px;
+}
+
+.button-toggle {
+    padding: 8px 16px;
+    background-color: #439dac;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.button-toggle:hover {
+    background-color: #0e424b;
+}
+
+.profile-view {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.user-details,
+.engineer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    padding: 60px;
+    padding-left: 200px;
+}
+
+.user-details {
+    margin-right: 20px;
+}
+
+.engineer-details,
+.experiences {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.engineer-details h2,
+.experiences h2,
+.user-details h2 {
+    color: #0e424b;
+    font-weight: bold;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+}
+
+.input-group input[type="text"],
+.input-group textarea {
+    padding: 8px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.experience-list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.experience-list ul li {
+    margin-bottom: 5px;
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #06b6d4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0491a1;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.experience-header {
+    display: flex;
+    align-items: center;
+}
+
+.experience-header h2 {
+    margin-right: 10px;
+}
+
+.modal {
+    width: 800px;
+    height: 600px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f1f1f1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal h3 {
+    margin-top: 0;
+}
+
+.modal p {
+    margin-bottom: 10px;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.modal input[type="text"],
+.modal textarea,
+.modal input[type="number"] {
+    padding: 8px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.modal textarea {
+    height: 100px;
+}
+
+.modal button {
+    padding: 8px 12px;
+    margin-right: 10px;
+    background-color: #06b6d4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons button {
+    margin-left: 10px;
+}
+
+.modal button:hover {
+    background-color: #0491a1;
+}
+
+.modal button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.modal input[type="text"] {
+    width: 100%;
+}
+
+.modal .form-group {
+    margin-bottom: 20px;
+}
+
+.modal input[type="password"],
+.modal textarea,
+.modal input[type="number"] {
+    padding: 8px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.change-password-modal input[type="password"],
+.change-password-modal textarea,
+.change-password-modal input[type="number"] {
+    padding: 8px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button-group button {
+    padding: 8px 12px;
+    background-color: #06b6d4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.button-group button:last-child {
+    margin-right: 0;
+}
+
+.cv-container {
+    display: flex;
+    align-items: center;
+}
+
+.cv-content {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.no-cv {
+    margin: 0;
+    margin-left: 10px;
+}
+
+input[type="file"] {
+    padding: 8px 12px;
+    margin-right: 10px;
+    background-color: #06b6d4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+input[type="file"]:hover {
+    background-color: #0491a1;
+}
+
+input[type="file"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.table-wrapper {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.projects-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.projects-table th,
+.projects-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.projects-table th {
+    background-color: #0e424b;
+    color: white;
+    font-weight: bold;
+}
+
+.projects-table tbody tr:nth-child(even) {
+    background-color: #00d9ff;
+}
+
+.projects-table ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.projects-table ul li {
+    margin-bottom: 5px;
+}
+
+/* Reduce size of projects modal */
+.projects-modal {
+    width: 600px;
+    height: 500px;
+}
+
+/* Reduce size of user modal */
+.user-modal {
+    width: 600px;
+    height: 500px;
+}
