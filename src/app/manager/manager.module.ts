@@ -18,6 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ManagerComponent } from "./manager.component";
 import { ManGuard } from "../auth/model/manager.guard";
+import { ManagersProjectsComponent } from "./managers-projects/managers-projects.component";
+import { ManagerProjectEmployeesComponent } from "./manager-project-employees/manager-project-employees.component";
 import { ManagerProfileComponent } from './manager-profile/manager-profile.component';
 
 
@@ -28,6 +30,14 @@ const routes: Routes = [
         component: ManagerComponent,
         canActivate: [ManGuard],
         children: [
+            {
+                path: 'projects',
+                component: ManagersProjectsComponent
+            },
+            {
+                path: 'project-employees/:id',
+                component: ManagerProjectEmployeesComponent
+            },
             {
                 path: 'info',
                 component: ManagerProfileComponent
@@ -40,6 +50,8 @@ const routes: Routes = [
     declarations: [
         SideMenuComponent,
         ManagerComponent,
+        ManagersProjectsComponent,
+        ManagerProjectEmployeesComponent,
         ManagerProfileComponent
 
     ],

@@ -1,0 +1,24 @@
+<table class="user-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Started working</th>
+      <th>Stopped working</th>
+      <th>Experience</th>
+      <th>View employees</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of projectList">
+      <td>{{ p.project.title }}</td>
+      <td>{{ p.workDescription }}</td>
+      <td>{{ p.startedWorking }}</td>
+      <td>{{ p.endedWorking }}</td>
+      <td>{{ p.experience }}</td>
+      <td><button class="deny-btn" (click)="viewEmployeesForProject(p.project.id)"><mat-icon>view_list</mat-icon></button></td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="deny-btn" (click)="addNewProject()"><mat-icon>create</mat-icon></button>

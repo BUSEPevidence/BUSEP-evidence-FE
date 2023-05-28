@@ -31,7 +31,6 @@ import { ProjectEmployeesComponent } from "./project-employees/project-employees
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 
-
 const routes: Routes = [
     {
         path: 'admin',
@@ -100,21 +99,22 @@ const routes: Routes = [
         AllProjectsComponent,
         CreateProjectComponent,
         ProjectEmployeesComponent,
-        AdminProfileComponent
+        AdminProfileComponent,
     ],
     imports: [
         MatToolbarModule,
-        MatIconModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         CommonModule,
         MatInputModule,
+        MatIconModule,
         MatButtonModule,
         MatDatepickerModule,
         MatNativeDateModule,
         MatTableModule,
         HttpClientModule,
         MatSnackBarModule,
+        FormsModule,
         MatRadioModule,
         MatSelectModule,
         FormsModule,

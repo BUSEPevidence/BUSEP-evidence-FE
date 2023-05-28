@@ -20,6 +20,7 @@ export class ProjectEmployeesComponent implements OnInit {
   };
   selectedEmployee!: EmployeeDTO;
   nonEmployeeList: EmployeeDTO[] = [];
+  description: string = '';
 
   constructor(private adminService: AdminService) { }
 
@@ -28,7 +29,6 @@ export class ProjectEmployeesComponent implements OnInit {
   ngOnInit() {
     const url = window.location.href;
     const id = this.extractIdFromUrl(url);
-    console.log("ID IS::::: "+id)
     this.getAllEmployees(parseInt(id));
     this.getProject(parseInt(id));
     this.getAllNonEmployees(parseInt(id))
@@ -55,9 +55,14 @@ export class ProjectEmployeesComponent implements OnInit {
     const dto: AddWorkerToProjectDTO = {
       projectId: this.project.id,
       username: this.selectedEmployee.username,
-      description: ""
+      description: this.description
     }
     this.adminService.addEmployeeToProject(dto);
+    window.location.reload()
+  }
+
+  setDescription(d: string) {
+    this.description = d;
   }
 
 }

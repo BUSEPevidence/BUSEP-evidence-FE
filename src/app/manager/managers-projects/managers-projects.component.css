@@ -48,6 +48,7 @@
     border: none;
     cursor: pointer;
     margin-right: 5px;
+    margin-left:150px;
   }
   
   .accept-btn:hover,
@@ -57,26 +58,4 @@
   
   h1 {
     text-align: center;
-  }
-
-  .project-title {
-    margin-top: 15px;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-
-  .label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: white;
-  }
-
-  .description-input {
-    width: calc(100% - 20px); /* Adjusted width to account for padding */
-    padding: 10px;
-    margin-bottom: 5px;
-    margin-right: 10px; /* Added right margin */
-    border: 1px solid #ccc;
-    border-radius: 4px;
   }
