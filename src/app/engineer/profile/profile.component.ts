@@ -60,7 +60,7 @@ export class ProfileComponent implements OnInit {
     );
     this.newExperience.grade = 0;
     this.newExperience.title = "";
-    this.getEngineerProfile();
+    window.location.reload();
     this.closeNewExperienceModal();
   }
 
@@ -81,7 +81,7 @@ export class ProfileComponent implements OnInit {
         console.error('Error updating engineer description:', error);
       }
     );
-    this.getEngineerProfile();
+    window.location.reload();
   }
 
   openNewExperienceModal(): void {
@@ -136,8 +136,8 @@ export class ProfileComponent implements OnInit {
         console.error('Error updating engineer description:', error);
       }
     );
-    this.getEngineerProfile();
     event.target.value = null;
+    window.location.reload();
   }
 
   openCV(): void {

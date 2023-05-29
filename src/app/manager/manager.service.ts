@@ -10,6 +10,7 @@ import { EmployeeWithDatesDTO } from './model/EmployeeWithDatesDTO';
 import { NewPasswordDTO } from '../hr/model/NewPasswordDTO';
 import { ShowUserDTO } from '../hr/model/ShowUserDTO';
 import { UpdateUserDTO } from '../hr/model/UpdateUserDTO';
+import { UpdateProjectDTO } from './model/UpdateProjectDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class ManagerService {
 
   getAllProjects(): (ManagersProjectDTO[]) {
     const resultList: ManagersProjectDTO[] = [];
-    this.http.get<ManagersProjectDTO[]>(this.apiHost + "api/project/past-projects", {headers: this.headers}).subscribe(res => {
+    this.http.get<ManagersProjectDTO[]>(this.apiHost + "/project/past-projects", { headers: this.headers }).subscribe(res => {
       res.forEach(p => {
         const newProject: ManagersProjectDTO = {
           id: p.id,
@@ -46,7 +47,7 @@ export class ManagerService {
 
   getProjectEmployees(id: number): (EmployeeWithDatesDTO[]) {
     const resultList: EmployeeWithDatesDTO[] = [];
-    this.http.get<EmployeeWithDatesDTO[]>(this.apiHost + "api/project/workers-with-dates?projectId=" + id, {headers: this.headers}).subscribe(res => {
+    this.http.get<EmployeeWithDatesDTO[]>(this.apiHost + "/project/workers-with-dates?projectId=" + id, { headers: this.headers }).subscribe(res => {
       res.forEach(e => {
         const newEmployee: EmployeeWithDatesDTO = {
           username: e.username,
@@ -66,15 +67,15 @@ export class ManagerService {
     return resultList;
   }
 
-  getSelectedProject(projId: number) : (ProjectDTO) {
-    const result: ProjectDTO ={
-      title : "",
-      description : "",
-      endTime : new Date,
-      startTime : new Date,
-      id : 0
+  getSelectedProject(projId: number): (ProjectDTO) {
+    const result: ProjectDTO = {
+      title: "",
+      description: "",
+      endTime: new Date,
+      startTime: new Date,
+      id: 0
     }
-    this.http.get<ProjectDTO>(this.apiHost + "api/project/details?id=" + projId, {headers: this.headers}).subscribe( res => {
+    this.http.get<ProjectDTO>(this.apiHost + "/project/details?id=" + projId, { headers: this.headers }).subscribe(res => {
       result.title = res.title;
       result.description = res.description;
       result.startTime = res.startTime;
@@ -86,7 +87,7 @@ export class ManagerService {
 
   getAllNonEmployees(id: number): (EmployeeDTO[]) {
     const resultList: EmployeeDTO[] = [];
-    this.http.get<EmployeeDTO[]>(this.apiHost + "api/project/non-workers?projectId=" + id, {headers: this.headers}).subscribe(res => {
+    this.http.get<EmployeeDTO[]>(this.apiHost + "/project/non-workers?projectId=" + id, { headers: this.headers }).subscribe(res => {
       res.forEach(e => {
         const newEmployee: EmployeeDTO = {
           username: e.username,
@@ -105,13 +106,13 @@ export class ManagerService {
   }
 
   addEmployeeToProject(dto: AddWorkerToProjectDTO) {
-    this.http.post<string>(this.apiHost + "api/project/add-worker", dto, {headers: this.headers}).subscribe( res=> {
+    this.http.post<string>(this.apiHost + "/project/add-worker", dto, { headers: this.headers }).subscribe(res => {
 
     })
   }
 
   removeEmployeeFromProject(dto: RemoveEmployeeDTO) {
-    this.http.put<string>(this.apiHost + "api/project/remove-worker", dto, {headers: this.headers}).subscribe(res => {
+    this.http.put<string>(this.apiHost + "/project/remove-worker", dto, { headers: this.headers }).subscribe(res => {
 
     })
   }
@@ -127,5 +128,9 @@ export class ManagerService {
 
   public changePasswords(dto: NewPasswordDTO): Observable<string> {
     return this.http.put<string>(this.apiHost + '/user/change-password', dto, { headers: this.headers });
+  }
+
+  public updateProject(updateProjectDTO: UpdateProjectDTO): Observable<string> {
+    return this.http.put<string>(this.apiHost + '/project/managed-update', updateProjectDTO, { headers: this.headers });
   }
 }
