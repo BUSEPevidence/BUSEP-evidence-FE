@@ -7,6 +7,7 @@
       <th>Address</th>
       <th>Phone number</th>
       <th>Roles</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,7 @@
       <td>{{ employee.address }} {{employee.city}} {{employee.state}}</td>
       <td>{{ employee.number}}</td>
       <td>{{ employee.roles }}</td>
+      <td><button class="change-password-button" (click)="BlockUser(employee.username)">Block</button> </td>
     </tr>
   </tbody>
 </table>

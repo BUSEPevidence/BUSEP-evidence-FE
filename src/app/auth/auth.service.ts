@@ -142,6 +142,11 @@ executed = false;
       this.getRoles(this.getDecodedAccessToken(res.token).sub)
   });
   }
+  public forgot(username : string) {
+    return this.http.post<TokenInterface>(this.apiHost + 'api/auth/password?username=' + username, { headers: this.headers }).subscribe(res => {
+      console.log(res)
+  });
+  }
   public resetPassword(user: LoginUser) {
     var tkn = localStorage.getItem('token')
     var userr

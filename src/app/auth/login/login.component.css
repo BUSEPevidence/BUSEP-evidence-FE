@@ -33,9 +33,15 @@ body {
   font-weight: bold;
   color: white;
 }
+.login-form a {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: white;
+}
 
 .login-form input[type="text"],
-.login-form input[type="password"] {
+.login-form input[type="password"]{
   width: calc(100% - 20px); /* Adjusted width to account for padding */
   padding: 10px;
   margin-bottom: 20px;

@@ -15,7 +15,9 @@ export class AllEmployeesComponent implements OnInit {
     this.getAllEmployees();
   }
 
-
+  public BlockUser(username : string){
+    this.adminService.BlockUser(username);
+  }
   public getAllEmployees() {
     this.employeeList = this.adminService.getAllEmployees();
     console.log(this.employeeList)
