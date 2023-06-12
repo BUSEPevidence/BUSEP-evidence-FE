@@ -85,6 +85,11 @@ export class AdminService {
 
     });
   }
+  BlockUser(username:string) {
+    return this.http.post<string>(this.apiHost + "admin/block?username=" + username, { headers: this.headers }).subscribe(res => {
+
+    });
+  }
 
   getRequests(): (RegisterUser[]) {
     var c: string = ""
