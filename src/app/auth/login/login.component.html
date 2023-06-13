@@ -1,13 +1,15 @@
 <div class="login-container">
-    <h2>Login</h2>
-    <form class="login-form" action="/login" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" [(ngModel)]="username" required>
-  
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" [(ngModel)]="password" required>
-  
-      <button type="submit" (click)="login()" [disabled]="!(validateUsername() && validatePassword())">Login</button>
+  <h2>Login</h2>
+  <form class="login-form" action="/login" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="username" required>
 
-    </form>
-  </div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="password" required>
+
+    <a type="forgot" (click)="forgotPassword()" >Forgot Password</a>
+
+    <button type="submit" (click)="login()" [disabled]="!(validateUsername() && validatePassword())">Login</button>
+  </form>
+ 
+</div>

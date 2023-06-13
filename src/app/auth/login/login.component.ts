@@ -39,6 +39,15 @@ export class LoginComponent {
     this.getValues();
     this.authService.login(this.user)
   }
+  public forgotPassword()
+  {
+    this.getValues();
+    if (this.user.username == "")alert("Fill username")
+    else
+    {
+    this.authService.forgot(this.user.username)
+    }
+  }
 
   public goToPasswordless() {
     this.router.navigate(["/passwordless"]);
