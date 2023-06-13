@@ -15,6 +15,7 @@ import { AddWorkerToProjectDTO } from './model/AddWorkerToProjectDTO';
 import { NewPasswordDTO } from '../hr/model/NewPasswordDTO';
 import { ShowUserDTO } from '../hr/model/ShowUserDTO';
 import { UpdateUserDTO } from '../hr/model/UpdateUserDTO';
+import { FilterParamsDTO } from './model/FilterParamsDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -277,5 +278,9 @@ export class AdminService {
 
   public changePasswords(dto: NewPasswordDTO): Observable<string> {
     return this.http.put<string>(this.apiHost + 'api/user/change-password', dto, { headers: this.headers });
+  }
+
+  public getFiltered(dto: FilterParamsDTO): Observable<ShowUserDTO[]> {
+    return this.http.put<EmployeeDTO[]>(this.apiHost + 'api/user/filter', dto, { headers: this.headers });
   }
 }
