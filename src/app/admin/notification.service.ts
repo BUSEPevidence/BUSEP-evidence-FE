@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
 import * as SockJS from "sockjs-client";
 import * as Stomp from 'stompjs'
 
@@ -6,7 +7,7 @@ import * as Stomp from 'stompjs'
     providedIn: 'root'
   })
   export class NotificationService {
-    constructor() {
+    constructor(private toastr: ToastrService) {
         this.initializeWebSocketConnection();
         
       }
@@ -20,10 +21,10 @@ import * as Stomp from 'stompjs'
         const that = this;
         // tslint:disable-next-line:only-arrow-functions
         console.log("Socket Initialized")
-        this.stompClient.connect({}, function(frame) {
-          that.stompClient?.subscribe('/topic/notification', (message) => {
-           console.log(message)
+        this.stompClient.connect({}, (frame) => {
+            that.stompClient?.subscribe('/topic/notification', (message) => {
+              this.toastr.warning(message.body, 'Warning');
+            });
           });
-        });
       }
   }
