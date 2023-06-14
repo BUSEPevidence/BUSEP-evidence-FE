@@ -15,7 +15,12 @@
                 <div class="tooltip">Profile</div>
             </div>
         </a>
-
+        <a [routerLink]="['/hr/workers']" [hidden]="isHiddenLogout()">
+            <div class="item">
+                <mat-icon aria-hidden="false" aria-label="All employees" fontIcon="people"></mat-icon>
+                <div class="tooltip">All Employees</div>
+            </div>
+        </a>
 
 
     </div>

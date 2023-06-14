@@ -58,7 +58,7 @@ export class AdminProfileComponent {
         console.error('Error updating engineer description:', error);
       }
     );
-    this.getUserProfile();
+    window.location.reload();
   }
 
   openChangePasswordModal(): void {

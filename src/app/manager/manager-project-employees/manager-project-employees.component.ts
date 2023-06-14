@@ -12,7 +12,7 @@ import { EmployeeWithDatesDTO } from '../model/EmployeeWithDatesDTO';
   styleUrls: ['./manager-project-employees.component.css']
 })
 export class ManagerProjectEmployeesComponent implements OnInit {
-  
+
   employeeList: EmployeeWithDatesDTO[] = []
   project: ProjectDTO = {
     title: "",
@@ -47,7 +47,7 @@ export class ManagerProjectEmployeesComponent implements OnInit {
   public getAllNonEmployees(id: number) {
     this.nonEmployeeList = this.managerService.getAllNonEmployees(id);
   }
-  
+
   public extractIdFromUrl(url: string) {
     const segments = url.split('/');
     return segments[segments.length - 1];
@@ -67,7 +67,7 @@ export class ManagerProjectEmployeesComponent implements OnInit {
     this.description = d;
   }
 
-  removeEmployeeFromProject(employee: EmployeeDTO){
+  removeEmployeeFromProject(employee: EmployeeDTO) {
     const dto: RemoveEmployeeDTO = {
       projectId: this.project.id,
       username: employee.username
@@ -77,4 +77,8 @@ export class ManagerProjectEmployeesComponent implements OnInit {
     window.location.reload();
   }
 
+  formatDate(date: Date): string {
+    const formattedDate = new Date(date).toLocaleDateString('en-US');
+    return formattedDate;
+  }
 }

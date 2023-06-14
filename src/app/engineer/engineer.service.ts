@@ -32,7 +32,7 @@ export class EngineerService {
   }
 
   public updateWork(dto: UpdateWorkerTaskDTO): Observable<string> {
-    return this.http.put<string>(this.apiHost + '/project/active-projects/', dto, { headers: this.headers });
+    return this.http.put<string>(this.apiHost + '/project/update-work', dto, { headers: this.headers });
   }
 
   public getEngineer(): Observable<ShowEngineerDTO> {

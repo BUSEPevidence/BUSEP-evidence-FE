@@ -1,24 +1,55 @@
-<table class="user-table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Started working</th>
-      <th>Stopped working</th>
-      <th>Experience</th>
-      <th>View employees</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let p of projectList">
-      <td>{{ p.project.title }}</td>
-      <td>{{ p.workDescription }}</td>
-      <td>{{ p.startedWorking }}</td>
-      <td>{{ p.endedWorking }}</td>
-      <td>{{ p.experience }}</td>
-      <td><button class="deny-btn" (click)="viewEmployeesForProject(p.project.id)"><mat-icon>view_list</mat-icon></button></td>
-    </tr>
-  </tbody>
-</table>
-
-<button class="deny-btn" (click)="addNewProject()"><mat-icon>create</mat-icon></button>
+<div>
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Started working</th>
+        <th>Stopped working</th>
+        <th>Experience</th>
+        <th>View employees</th>
+        <th>Update informations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of projectList">
+        <td>{{ p.project.title }}</td>
+        <td>{{ p.workDescription }}</td>
+        <td>{{ formatDate(p.startedWorking) }}</td>
+        <td>{{ formatDate(p.endedWorking) }}</td>
+        <td>{{ p.experience }}</td>
+        <td><button class="deny-btn"
+            (click)="viewEmployeesForProject(p.project.id)"><mat-icon>view_list</mat-icon></button></td>
+        <td><button class="deny-btn" (click)="openProjectModal(p)"><mat-icon>informations</mat-icon></button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="projectModalVisible && selectedProject" class="modal">
+    <div class="project-details">
+      <h2>Project Information</h2>
+      <div class="input-group">
+        <label for="start-time">Start Time:</label>
+        <input type="datetime-local" id="start-time"
+          [ngModel]="selectedProject.project.startTime | date:'yyyy-MM-ddTHH:mm'"
+          (ngModelChange)="selectedProject.project.startTime = $event">
+      </div>
+      <div class="input-group">
+        <label for="end-time">End Time:</label>
+        <input type="datetime-local" id="end-time" [ngModel]="selectedProject.project.endTime | date:'yyyy-MM-ddTHH:mm'"
+          (ngModelChange)="selectedProject.project.endTime = $event">
+      </div>
+      <div class="input-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" [(ngModel)]="selectedProject.project.title">
+      </div>
+      <div class="input-group">
+        <label for="description">Description:</label>
+        <textarea id="description" [(ngModel)]="selectedProject.project.description"></textarea>
+      </div>
+      <div class="button-group">
+        <button (click)="closeProjectModal()">Cancel</button>
+        <button class="save-button" (click)="saveChanges()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -45,7 +45,7 @@ export class ProjectEmployeesComponent implements OnInit {
   public getAllNonEmployees(id: number) {
     this.nonEmployeeList = this.adminService.getAllNonEmployees(id);
   }
-  
+
   public extractIdFromUrl(url: string) {
     const segments = url.split('/');
     return segments[segments.length - 1];

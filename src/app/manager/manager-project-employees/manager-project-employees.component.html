@@ -2,21 +2,23 @@
 
 <table class="user-table" style="border: 5px solid #0e424b;">
   <thead>
-    
+
   </thead>
   <tbody>
-      <td>
-          <mat-select [(value)]="selectedEmployee">
-              <mat-option *ngFor="let value of nonEmployeeList" [value]="value">{{ value.firstname }} {{value.lastname}}</mat-option>
-          </mat-select>
-      </td>
-      <td>
-        <label for="description" class="label">Description</label>
-        <input type="text" class="description-input" id="description" name="description" #descriptionInput required (input)="setDescription(descriptionInput.value)">
-      </td>
-      <td>
-        <button class="accept-btn"  (click)="addEmployeeToProject()">Add employee</button>
-      </td>
+    <td>
+      <mat-select [(value)]="selectedEmployee">
+        <mat-option *ngFor="let value of nonEmployeeList" [value]="value">{{ value.firstname }}
+          {{value.lastname}}</mat-option>
+      </mat-select>
+    </td>
+    <td>
+      <label for="description" class="label">Description</label>
+      <input type="text" class="description-input" id="description" name="description" #descriptionInput required
+        (input)="setDescription(descriptionInput.value)">
+    </td>
+    <td>
+      <button class="accept-btn" (click)="addEmployeeToProject()">Add employee</button>
+    </td>
   </tbody>
 </table>
 
@@ -42,9 +44,10 @@
       <td>{{ employee.address }} {{employee.city}} {{employee.state}}</td>
       <td>{{ employee.number}}</td>
       <td>{{ employee.roles }}</td>
-      <td>{{ employee.startedWorking }}</td>
-      <td>{{ employee.endedWorking }}</td>
-      <td><button class="deny-btn" (click)="removeEmployeeFromProject(employee)"><mat-icon>delete</mat-icon></button></td>
+      <td>{{ formatDate(employee.startedWorking) }}</td>
+      <td>{{ formatDate(employee.endedWorking) }}</td>
+      <td><button class="deny-btn" (click)="removeEmployeeFromProject(employee)"><mat-icon>delete</mat-icon></button>
+      </td>
       <td></td>
     </tr>
   </tbody>
