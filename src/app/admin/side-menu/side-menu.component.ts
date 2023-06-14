@@ -2,6 +2,7 @@ import { trigger, transition, query, style, stagger, animate } from "@angular/an
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuService } from "../menu.service";
+import { NotificationService } from "../notification.service";
 
 
 
@@ -35,6 +36,7 @@ export class SideMenuComponent implements OnInit {
   constructor(
     private readonly menuService: MenuService,
     private readonly router: Router,
+    private readonly notificationService : NotificationService
   ) { }
 
   ngOnInit(): void {

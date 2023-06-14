@@ -11,7 +11,6 @@ import { AuthModule } from './auth/auth.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './auth/model/auth.interceptor';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
 import { HrModule } from './hr/hr.module';
 import { ManagerModule } from './manager/manager.module';
 import { EngineerModule } from './engineer/engineer.module';
