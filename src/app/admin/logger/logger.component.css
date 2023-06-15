@@ -1,0 +1,60 @@
+.log-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #439dac;
+  }
+  
+  .log-table th,
+  .log-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  
+  .log-table th {
+    background-color: #0e424b;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .log-table tbody tr:nth-child(even) {
+    background-color: #00d9ff;
+  }
+  
+  .log-table ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .log-table ul li {
+    margin-bottom: 5px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .accept-btn,
+  .deny-btn {
+    padding: 5px 10px;
+    background-color: #0e424b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .accept-btn:hover,
+  .deny-btn:hover {
+    background-color: #00d9ff;
+  }
+  
+  h1 {
+    text-align: center;
+  }

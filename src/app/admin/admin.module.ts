@@ -29,6 +29,7 @@ import { AllProjectsComponent } from "./all-projects/all-projects.component";
 import { CreateProjectComponent } from "./create-project/create-project.component";
 import { ProjectEmployeesComponent } from "./project-employees/project-employees.component";
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { LoggerComponent } from "./logger/logger.component";
 
 
 const routes: Routes = [
@@ -80,6 +81,10 @@ const routes: Routes = [
             {
                 path: 'info',
                 component: AdminProfileComponent
+            },
+            {
+                path: 'logg',
+                component: LoggerComponent
             },
         ]
     }
