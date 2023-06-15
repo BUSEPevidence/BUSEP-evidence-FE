@@ -1,6 +1,6 @@
 import { trigger, transition, query, style, stagger, animate } from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { NavigationExtras, Router } from "@angular/router";
 import { MenuService } from "../menu.service";
 import { NotificationService } from "../notification.service";
 
@@ -40,6 +40,7 @@ export class SideMenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.notificationService.initializeWebSocketConnection()
   }
   onLogout() {
     localStorage.removeItem('token');
@@ -57,6 +58,13 @@ export class SideMenuComponent implements OnInit {
     localStorage.removeItem('role')
     localStorage.removeItem('refreshToken')
   }
+  dodat(){
+  this.router.navigate(["/admin/logg"])
+    .then(() => {
+      window.location.reload();
+    });
+}
+  
 
   isHidden() {
     if(localStorage.getItem('token') != null)

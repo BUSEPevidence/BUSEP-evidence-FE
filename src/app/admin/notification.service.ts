@@ -8,7 +8,7 @@ import * as Stomp from 'stompjs'
   })
   export class NotificationService {
     constructor(private toastr: ToastrService) {
-        this.initializeWebSocketConnection();
+
         
       }
       public stompClient: Stomp.Client | undefined;
@@ -25,6 +25,10 @@ import * as Stomp from 'stompjs'
             that.stompClient?.subscribe('/topic/notification', (message) => {
               this.toastr.warning(message.body, 'Warning');
             });
+            
           });
+      }
+      public getConn(){
+        return this.stompClient
       }
   }
