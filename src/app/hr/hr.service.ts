@@ -45,26 +45,10 @@ export class HrService {
   }
 
   downloadPdf(): void {
-    this.http.get(this.apiHost + '/user/pdf', {
-      responseType: 'blob',
-      headers: new HttpHeaders({ 'Cache-Control': 'no-cache' }) // Add cache control header
-    }).subscribe(response => {
+    this.http.get(this.apiHost + '/user/pdf', { headers: this.headers, responseType: 'blob' }).subscribe(response => {
       const blob = new Blob([response], { type: 'application/pdf' });
       const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.target = '_blank';
-
-      // Set the "download" attribute to force download instead of opening in the browser
-      link.download = 'Cv.pdf';
-
-      // Programmatically click the link to trigger the download
-      link.dispatchEvent(new MouseEvent('click'));
-
-      // Cleanup: Revoke the URL object after the download
-      setTimeout(() => {
-        window.URL.revokeObjectURL(url);
-      }, 100);
+      window.open(url);
     });
   }
 }
