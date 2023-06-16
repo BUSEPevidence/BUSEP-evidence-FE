@@ -74,8 +74,9 @@
                         <div class="cv-container">
                             <label for="cvUrl">CV:</label>
                             <div class="cv-content">
-                                <ng-container *ngIf="showEngineer.details.CvUrl !== ''; else noCVUploaded">
-                                    <button (click)="openCV()">View CV</button>
+                                <ng-container *ngIf="showEngineer.details.CvUrl; else noCVUploaded">
+                                    <button (click)="openCV()" id="cvButton">View
+                                        CV</button>
                                 </ng-container>
                             </div>
                         </div>
