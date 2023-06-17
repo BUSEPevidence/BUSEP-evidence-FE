@@ -57,4 +57,12 @@ export class EngineerService {
 
     return this.http.put<string>(this.apiHost + '/user/engineer/upload', formData);
   }
+
+  downloadPdf(): void {
+    this.http.get(this.apiHost + '/user/pdf', { headers: this.headers, responseType: 'blob' }).subscribe(response => {
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url);
+    });
+  }
 }

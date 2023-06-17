@@ -3,6 +3,7 @@ import { ShowUserDTO } from '../model/ShowUserDTO';
 import { ShowEngineerDTO } from 'src/app/engineer/model/ShowEngineerDTO';
 import { HrService } from '../hr.service';
 import { ShowWorkOnProjectDTO } from 'src/app/engineer/model/ShowWorkOnProjectDTO';
+import * as PDFJS from 'pdfjs-dist';
 
 @Component({
   selector: 'app-all-workers',
@@ -17,6 +18,8 @@ export class AllWorkersComponent implements OnInit {
   userModalVisible: boolean = false;
   showEngineer: ShowEngineerDTO | null = null;
   projects: ShowWorkOnProjectDTO[] | null = null;
+  cvModalVisible = false;
+  cvUrl: string = "";
 
   constructor(private service: HrService) { }
 
@@ -88,9 +91,8 @@ export class AllWorkersComponent implements OnInit {
     this.userModalVisible = false;
   }
 
-  openCV(): void {
-    if (this.showEngineer)
-      window.open(this.showEngineer.details.CvUrl, '_blank');
+  openCV() {
+    this.service.downloadPdf();
   }
 
   formatDate(date: Date): string {

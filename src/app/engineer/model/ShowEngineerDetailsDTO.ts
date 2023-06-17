@@ -1,4 +1,4 @@
 export interface ShowEngineerDetailsDTO {
     seniority: string;
-    CvUrl: string;
+    CvUrl: boolean;
 }

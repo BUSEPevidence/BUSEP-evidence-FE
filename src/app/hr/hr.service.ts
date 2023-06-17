@@ -43,4 +43,12 @@ export class HrService {
     const params = new HttpParams().set('username', username);
     return this.http.get<ShowWorkOnProjectDTO[]>(this.apiHost + '/project/workers/projects', { headers: this.headers, params: params });
   }
+
+  downloadPdf(): void {
+    this.http.get(this.apiHost + '/user/pdf', { headers: this.headers, responseType: 'blob' }).subscribe(response => {
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url);
+    });
+  }
 }

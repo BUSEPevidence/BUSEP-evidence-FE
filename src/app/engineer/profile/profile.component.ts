@@ -137,14 +137,16 @@ export class ProfileComponent implements OnInit {
       }
     );
     event.target.value = null;
-    window.location.reload();
-  }
-
-  openCV(): void {
-    window.open(this.engineer.details.CvUrl, '_blank');
+    setTimeout(() => {
+      window.location.reload();
+    }, 5000);
   }
 
   isUserLoaded(): boolean {
     return this.user !== undefined;
+  }
+
+  openCV() {
+    this.service.downloadPdf();
   }
 }
