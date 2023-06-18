@@ -51,6 +51,12 @@
                 <div class="tooltip">Loggs</div>
             </div>
         </a>
+        <a [routerLink]="['/change-password']" [hidden]="!isHidden()" >
+            <div class="item">
+                <mat-icon aria-hidden="false" aria-label="Login icon" fontIcon="Change"></mat-icon>
+                <div class="tooltip">Change Password</div>
+            </div>
+        </a>
 
 
     </div>

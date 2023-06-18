@@ -21,6 +21,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { MagicLoginComponent } from './magic-login/magic-login.component';
 import { MagicLinkComponent } from './magic-link/magic-link.component';
 import { FirstLoginComponent } from './first-login/first-login.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,10 @@ const routes: Routes = [
       {
         path: 'first-login',
         component: FirstLoginComponent
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent
       }
     ]
   }
@@ -61,7 +66,8 @@ const routes: Routes = [
     AuthComponent,
     MagicLoginComponent,
     MagicLinkComponent,
-    FirstLoginComponent
+    FirstLoginComponent,
+    ChangePasswordComponent
   ],
   imports: [
     MatToolbarModule,

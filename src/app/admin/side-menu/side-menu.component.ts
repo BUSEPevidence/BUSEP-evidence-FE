@@ -57,6 +57,7 @@ export class SideMenuComponent implements OnInit {
     localStorage.removeItem('token')
     localStorage.removeItem('role')
     localStorage.removeItem('refreshToken')
+    this.notificationService.destroySocketConnection()
   }
   dodat(){
   this.router.navigate(["/admin/logg"])

@@ -24,9 +24,17 @@ import * as Stomp from 'stompjs'
         this.stompClient.connect({}, (frame) => {
             that.stompClient?.subscribe('/topic/notification', (message) => {
               this.toastr.warning(message.body, 'Warning');
+              console.log(message.body)
             });
             
           });
+      }
+      destroySocketConnection() {
+        if (this.stompClient) {
+          this.stompClient.disconnect(() => {
+            console.log('Disconnected from Stomp server');
+          });
+        }
       }
       public getConn(){
         return this.stompClient
