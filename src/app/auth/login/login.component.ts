@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { LoginUser } from './model/LoginUser';
 import { NotificationService } from 'src/app/admin/notification.service';
+import { LoginUserFA } from './model/LoginUserFA';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,11 @@ export class LoginComponent {
 
   username: string = ''
   password: string = ''
-  public user: LoginUser = {
+  fa: string = ''
+  public user: LoginUserFA = {
     username: '',
     password: '',
+    fa : ''
   };
 
   public getValues()
@@ -25,9 +28,11 @@ export class LoginComponent {
   // Retrieve the values
   const usernameInput = document.getElementById('username') as HTMLInputElement;
   const passwordInput = document.getElementById('password') as HTMLInputElement;
+  const faInput = document.getElementById('fa') as HTMLInputElement;
 
   this.user.username = usernameInput.value;
   this.user.password = passwordInput.value;
+  this.user.fa = faInput.value;
 
   }
   ngOnInit() {

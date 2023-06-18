@@ -7,6 +7,9 @@
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" [(ngModel)]="password" required>
 
+    <label for="fa">FA:</label>
+    <input type="fa" id="fa" name="fa" [(ngModel)]="fa" required><br><br>
+
     <a type="forgot" (click)="forgotPassword()" >Forgot Password</a>
 
     <button type="submit" (click)="login()" [disabled]="!(validateUsername() && validatePassword())">Login</button>

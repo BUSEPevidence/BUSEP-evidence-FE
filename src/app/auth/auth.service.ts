@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { NewPasswordDTO } from '../hr/model/NewPasswordDTO';
+import { LoginUserFA } from './login/model/LoginUserFA';
 interface TokenInterface
 {
   token:string;
@@ -136,7 +137,7 @@ executed = false;
   });
   }
 
-  public login(user: LoginUser) {
+  public login(user: LoginUserFA) {
     return this.http.post<TokenInterface>(this.apiHost + 'api/auth/login',user, { headers: this.headers }).subscribe(res => {
       localStorage.setItem('token',res.token)
       localStorage.setItem('refreshToken',res.refreshToken)
