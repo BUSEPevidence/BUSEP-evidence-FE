@@ -5,6 +5,7 @@ import { LoginUser } from './login/model/LoginUser';
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
+import { NewPasswordDTO } from '../hr/model/NewPasswordDTO';
 interface TokenInterface
 {
   token:string;
@@ -182,6 +183,10 @@ executed = false;
   public magicLogin(username: String) {
     const postBody = "{\"username\":\"" + username + "\"}";
     return this.http.post(this.apiHost + 'api/auth/passwordless', postBody,{ headers: this.headers }).subscribe( () => console.log("USPJESAN PASSWORDLESS"));
+  }
+
+  public changePassword(changeDto: NewPasswordDTO) {
+    return this.http.put(this.apiHost + 'api/user/change-pswrd', changeDto,{ headers: this.headers }).subscribe( () => console.log("USPJESAN PASSWORDLESS"));
   }
 
 }

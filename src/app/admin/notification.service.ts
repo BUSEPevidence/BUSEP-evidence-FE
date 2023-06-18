@@ -29,6 +29,13 @@ import * as Stomp from 'stompjs'
             
           });
       }
+      destroySocketConnection() {
+        if (this.stompClient) {
+          this.stompClient.disconnect(() => {
+            console.log('Disconnected from Stomp server');
+          });
+        }
+      }
       public getConn(){
         return this.stompClient
       }
